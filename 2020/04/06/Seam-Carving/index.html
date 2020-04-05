@@ -27,21 +27,21 @@
 <meta property="og:site_name" content="wmhst7&#39;s blog">
 <meta property="og:description" content="Seam carving算法原理Seam Carving: 与PPT的完全一致，先通过图像的梯度信息得到图像的能量分布，然后动态规划找出能量最小的路径并删除。 具体在实现能量分布时，一开始使用二层嵌套，速度不是很好，之后使用numpy中的卷积函数进行了改进，速度与效果都得到了提升。 Object Removal: 基本方法与Seam Carving一致，只是需要调整能量分布，每次为需要剪除的区域设">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://yoursite.com/2020/04/06/Seam-Carving/uploads/3.jpg">
-<meta property="og:image" content="http://yoursite.com/2020/04/06/Seam-Carving/uploads/33.jpg">
-<meta property="og:image" content="http://yoursite.com/2020/04/06/Seam-Carving/uploads/34.jpg">
-<meta property="og:image" content="http://yoursite.com/2020/04/06/Seam-Carving/uploads/3.jpg">
-<meta property="og:image" content="http://yoursite.com/2020/04/06/Seam-Carving/uploads/36.jpg">
-<meta property="og:image" content="http://yoursite.com/2020/04/06/Seam-Carving/uploads/4.jpg">
-<meta property="og:image" content="http://yoursite.com/2020/04/06/Seam-Carving/uploads/mask.jpg">
-<meta property="og:image" content="http://yoursite.com/2020/04/06/Seam-Carving/uploads/5.jpg">
+<meta property="og:image" content="http://yoursite.com/.com//3.jpg">
+<meta property="og:image" content="http://yoursite.com/.com//33.jpg">
+<meta property="og:image" content="http://yoursite.com/.com//34.jpg">
+<meta property="og:image" content="http://yoursite.com/.com//3.jpg">
+<meta property="og:image" content="http://yoursite.com/.com//36.jpg">
+<meta property="og:image" content="http://yoursite.com/.com//4.jpg">
+<meta property="og:image" content="http://yoursite.com/.com//mask.jpg">
+<meta property="og:image" content="http://yoursite.com/.com//5.jpg">
 <meta property="article:published_time" content="2020-04-05T16:04:56.000Z">
 <meta property="article:modified_time" content="2020-04-05T16:19:32.606Z">
 <meta property="article:author" content="wmhst7">
 <meta property="article:tag" content="python">
 <meta property="article:tag" content="DIP">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/04/06/Seam-Carving/uploads/3.jpg">
+<meta name="twitter:image" content="http://yoursite.com/.com//3.jpg">
 
 <link rel="canonical" href="http://yoursite.com/2020/04/06/Seam-Carving/">
 
@@ -203,16 +203,16 @@
 <p>具体在实现能量分布时，一开始使用二层嵌套，速度不是很好，之后使用numpy中的卷积函数进行了改进，速度与效果都得到了提升。</p>
 <p>Object Removal: 基本方法与Seam Carving一致，只是需要调整能量分布，每次为需要剪除的区域设置一个极低的能量值，从而使需要剪除的区域总是优先被去除。</p>
 <h3 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h3><h5 id="1-横向缩小"><a href="#1-横向缩小" class="headerlink" title="1.横向缩小"></a>1.横向缩小</h5><center>
-<img src="./uploads/3.jpg" alt="aspect_ratio" style="zoom:80%;" />
+<img src="/.com//3.jpg" alt="aspect_ratio" style="zoom:80%;">
 <br>原图
 </center>
 
 
 
 
-<img src="./uploads/33.jpg" alt="aspect_ratio" style="zoom:80%;" />
+<img src="/.com//33.jpg" alt="aspect_ratio" style="zoom:80%;">
 
-<img src="./uploads/34.jpg" alt="aspect_ratio" style="zoom:80%;" />
+<img src="/.com//34.jpg" alt="aspect_ratio" style="zoom:80%;">
 
 
 
@@ -221,13 +221,13 @@
 
 
 <h5 id="2-长宽比调整"><a href="#2-长宽比调整" class="headerlink" title="2.长宽比调整"></a>2.长宽比调整</h5><center>
-<img src="./uploads/3.jpg" alt="aspect_ratio" style="zoom:80%;" />
+<img src="/.com//3.jpg" alt="aspect_ratio" style="zoom:80%;">
 <br>原图
 </center>
 
 
 <center>
-<img src="./uploads/36.jpg" alt="aspect_ratio" style="zoom:80%;" />
+<img src="/.com//36.jpg" alt="aspect_ratio" style="zoom:80%;">
 <br>调整后
 </center>
 
@@ -237,7 +237,7 @@
 
 
 <h5 id="3-物体消除"><a href="#3-物体消除" class="headerlink" title="3.物体消除"></a>3.物体消除</h5><center>
-<img src="./uploads/4.jpg" alt="aspect_ratio" style="zoom:80%;" />
+<img src="/.com//4.jpg" alt="aspect_ratio" style="zoom:80%;">
 <br>原图
 </center>
 
@@ -245,14 +245,14 @@
 
 
 <center>
-<img src="./uploads/mask.jpg" alt="aspect_ratio" style="zoom:80%;" />
+<img src="/.com//mask.jpg" alt="aspect_ratio" style="zoom:80%;">
 <br>mask
 </center>
 
 
 
 <center>
-<img src="./uploads/5.jpg" alt="aspect_ratio" style="zoom:80%;" />
+<img src="/.com//5.jpg" alt="aspect_ratio" style="zoom:80%;">
 <br>剪除后
 <br>可以看出由于大海的颜色差异，还是可以看出不自然的现象
 <br>但是远景的山就比较自然
