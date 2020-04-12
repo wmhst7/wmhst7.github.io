@@ -176,7 +176,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-04-12 16:50:09" itemprop="dateModified" datetime="2020-04-12T16:50:09+08:00">2020-04-12</time>
+                <time title="Modified: 2020-04-12 17:05:12" itemprop="dateModified" datetime="2020-04-12T17:05:12+08:00">2020-04-12</time>
               </span>
 
           
@@ -198,7 +198,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">清华大学</span><br></pre></td></tr></table></figure>
 
 <h3 id="隐马尔科夫模型-HMM"><a href="#隐马尔科夫模型-HMM" class="headerlink" title="隐马尔科夫模型(HMM)"></a>隐马尔科夫模型(HMM)</h3><p>对于一个输入拼音串，每个拼音都可能有多个汉字对应。</p>
-<img src="/2020/04/11/%E6%8B%BC%E9%9F%B3%E8%BE%93%E5%85%A5%E6%B3%95/image-20200412012929047.png" alt="image-20200412012929047" style="zoom:50%;">
+<img src="/2020/04/11/%E6%8B%BC%E9%9F%B3%E8%BE%93%E5%85%A5%E6%B3%95/../../Intro_to_AI/PinYin/拼音输入法.assets/image-20200412012929047.png" alt="image-20200412012929047" style="zoom:50%;">
 
 <p>因此我们需要从这些汉字的组合中选取最优的一个。</p>
 <p>我们可以由语料库（大量的句子）经过处理计数得到每个汉字出现的概率以及两个汉字同时相邻出现的概率，但是我们不能直接计数得到某个句子出现的概率，因此这个模型可以当做一个隐马尔科夫模型，每个汉字串就是它的一个状态。</p>
@@ -207,7 +207,7 @@
 <p>除此之外我还对出现在句首的字符进行了统计，对句首字符概率进行了优化。</p>
 <h3 id="维特比算法-Viterbi-Algorithm"><a href="#维特比算法-Viterbi-Algorithm" class="headerlink" title="维特比算法(Viterbi Algorithm)"></a>维特比算法(Viterbi Algorithm)</h3><p>要求解这个HMM问题，我们需要使用维特比算法。</p>
 <p>维特比算法是一种动态规划算法，下图每一层的节点都与相邻的层的所有节点相连接，且汉字的二元概率可以看做两节点的距离，本质问题是求解起点到终点的最长路径。</p>
-<img src="/2020/04/11/%E6%8B%BC%E9%9F%B3%E8%BE%93%E5%85%A5%E6%B3%95/image-20200412012947671.png" alt="image-20200412012947671" style="width:90%;">
+<img src="/2020/04/11/%E6%8B%BC%E9%9F%B3%E8%BE%93%E5%85%A5%E6%B3%95/../../Intro_to_AI/PinYin/拼音输入法.assets/image-20200412012947671.png" alt="image-20200412012947671" style="width:90%;">
 
 <p>我们首先对概率取对数，将概率的积变为概率对数的和，然后逐层应用维特比算法。</p>
 <p>容易看出，由于只有相邻层有边，我们不需要遍历所有的路径，对于当前层的某个节点，只需对前一层的节点进行遍历，找到前一层中到当前节点距离与其到起点距离之和最大的节点即可。</p>
@@ -352,7 +352,8 @@
 
 <h5 id="运行方法："><a href="#运行方法：" class="headerlink" title="运行方法："></a>运行方法：</h5><p>二元模型: python pinyin ../data/input.txt ../data/output.txt</p>
 <p>三元模型: python pinyin3 ../data/input.txt ../data/output.txt</p>
-<h5 id="清华云盘："><a href="#清华云盘：" class="headerlink" title="清华云盘："></a>清华云盘：</h5><h5 id="github：https-github-com-wmhst7-PinYin"><a href="#github：https-github-com-wmhst7-PinYin" class="headerlink" title="github：https://github.com/wmhst7/PinYin"></a>github：<a href="https://github.com/wmhst7/PinYin" target="_blank" rel="noopener">https://github.com/wmhst7/PinYin</a></h5>
+<h5 id="清华云盘：https-cloud-tsinghua-edu-cn-d-c9542280e3a94b5ebd5c"><a href="#清华云盘：https-cloud-tsinghua-edu-cn-d-c9542280e3a94b5ebd5c" class="headerlink" title="清华云盘：https://cloud.tsinghua.edu.cn/d/c9542280e3a94b5ebd5c/"></a>清华云盘：<a href="https://cloud.tsinghua.edu.cn/d/c9542280e3a94b5ebd5c/" target="_blank" rel="noopener">https://cloud.tsinghua.edu.cn/d/c9542280e3a94b5ebd5c/</a></h5><h5 id="github：https-github-com-wmhst7-PinYin"><a href="#github：https-github-com-wmhst7-PinYin" class="headerlink" title="github：https://github.com/wmhst7/PinYin"></a>github：<a href="https://github.com/wmhst7/PinYin" target="_blank" rel="noopener">https://github.com/wmhst7/PinYin</a></h5><p>(github因文件大小限制，无三元模型所需文件)</p>
+
       
     </div>
 
@@ -777,6 +778,8 @@
 
 
 
+
+  
 
   
 
