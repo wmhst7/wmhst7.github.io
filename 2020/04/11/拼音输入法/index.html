@@ -20,28 +20,35 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="wmhst7&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="拼音输入法算法的基本思路与实现问题描述输入一个拼音串，输出最有可能的一个汉字串，即拼音输入法。 例如：输入 1qing hua da xue  输出 1清华大学  隐马尔科夫模型(HMM)对于一个输入拼音串，每个拼音都可能有多个汉字对应。   因此我们需要从这些汉字的组合中选取最优的一个。 我们可以由语料库（大量的句子）经过处理计数得到每个汉字出现的概率以及两个汉字同时相邻出现的概率，但是我们不能">
+<meta property="og:type" content="article">
+<meta property="og:title" content="拼音输入法">
+<meta property="og:url" content="http://yoursite.com/2020/04/11/%E6%8B%BC%E9%9F%B3%E8%BE%93%E5%85%A5%E6%B3%95/index.html">
 <meta property="og:site_name" content="wmhst7&#39;s blog">
+<meta property="og:description" content="拼音输入法算法的基本思路与实现问题描述输入一个拼音串，输出最有可能的一个汉字串，即拼音输入法。 例如：输入 1qing hua da xue  输出 1清华大学  隐马尔科夫模型(HMM)对于一个输入拼音串，每个拼音都可能有多个汉字对应。   因此我们需要从这些汉字的组合中选取最优的一个。 我们可以由语料库（大量的句子）经过处理计数得到每个汉字出现的概率以及两个汉字同时相邻出现的概率，但是我们不能">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/2020/04/11/%E6%8B%BC%E9%9F%B3%E8%BE%93%E5%85%A5%E6%B3%95/image-20200412012929047.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/11/%E6%8B%BC%E9%9F%B3%E8%BE%93%E5%85%A5%E6%B3%95/image-20200412012947671.png">
+<meta property="article:published_time" content="2020-04-11T14:11:52.624Z">
+<meta property="article:modified_time" content="2020-04-12T08:50:09.603Z">
 <meta property="article:author" content="wmhst7">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/04/11/%E6%8B%BC%E9%9F%B3%E8%BE%93%E5%85%A5%E6%B3%95/image-20200412012929047.png">
 
-<link rel="canonical" href="http://yoursite.com/">
+<link rel="canonical" href="http://yoursite.com/2020/04/11/%E6%8B%BC%E9%9F%B3%E8%BE%93%E5%85%A5%E6%B3%95/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'en'
   };
 </script>
 
-  <title>wmhst7's blog</title>
+  <title>拼音输入法 | wmhst7's blog</title>
   
 
 
@@ -139,9 +146,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
@@ -157,10 +165,9 @@
       <meta itemprop="name" content="wmhst7's blog">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/11/%E6%8B%BC%E9%9F%B3%E8%BE%93%E5%85%A5%E6%B3%95/" class="post-title-link" itemprop="url">拼音输入法</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          拼音输入法
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -190,7 +197,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="拼音输入法"><a href="#拼音输入法" class="headerlink" title="拼音输入法"></a>拼音输入法</h1><h2 id="算法的基本思路与实现"><a href="#算法的基本思路与实现" class="headerlink" title="算法的基本思路与实现"></a>算法的基本思路与实现</h2><h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>输入一个拼音串，输出最有可能的一个汉字串，即拼音输入法。</p>
+        <h1 id="拼音输入法"><a href="#拼音输入法" class="headerlink" title="拼音输入法"></a>拼音输入法</h1><h2 id="算法的基本思路与实现"><a href="#算法的基本思路与实现" class="headerlink" title="算法的基本思路与实现"></a>算法的基本思路与实现</h2><h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>输入一个拼音串，输出最有可能的一个汉字串，即拼音输入法。</p>
 <p>例如：输入</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">qing hua da xue</span><br></pre></td></tr></table></figure>
 
@@ -353,282 +360,30 @@
 <h5 id="运行方法："><a href="#运行方法：" class="headerlink" title="运行方法："></a>运行方法：</h5><p>二元模型: python pinyin ../data/input.txt ../data/output.txt</p>
 <p>三元模型: python pinyin3 ../data/input.txt ../data/output.txt</p>
 <h5 id="清华云盘："><a href="#清华云盘：" class="headerlink" title="清华云盘："></a>清华云盘：</h5><h5 id="github：https-github-com-wmhst7-PinYin"><a href="#github：https-github-com-wmhst7-PinYin" class="headerlink" title="github：https://github.com/wmhst7/PinYin"></a>github：<a href="https://github.com/wmhst7/PinYin" target="_blank" rel="noopener">https://github.com/wmhst7/PinYin</a></h5>
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/06/%E8%87%AA%E5%B7%B1%E4%BB%8B%E7%BB%8D/">
+        
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="wmhst7">
-      <meta itemprop="description" content="">
-    </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wmhst7's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/06/%E8%87%AA%E5%B7%B1%E4%BB%8B%E7%BB%8D/" class="post-title-link" itemprop="url">自己介绍</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-04-06 00:45:56 / Modified: 00:46:32" itemprop="dateCreated datePublished" datetime="2020-04-06T00:45:56+08:00">2020-04-06</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="你好"><a href="#你好" class="headerlink" title="你好"></a>你好</h1><h1 id="我恨可爱"><a href="#我恨可爱" class="headerlink" title="我恨可爱"></a>我恨可爱</h1><h1 id="请给我💰"><a href="#请给我💰" class="headerlink" title="请给我💰"></a>请给我💰</h1>
-      
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/04/06/%E8%87%AA%E5%B7%B1%E4%BB%8B%E7%BB%8D/" rel="prev" title="自己介绍">
+      <i class="fa fa-chevron-left"></i> 自己介绍
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/06/SeamCarving/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="wmhst7">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wmhst7's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/06/SeamCarving/" class="post-title-link" itemprop="url">SeamCarving</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-04-06 00:28:07 / Modified: 00:34:52" itemprop="dateCreated datePublished" datetime="2020-04-06T00:28:07+08:00">2020-04-06</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Seam-carving"><a href="#Seam-carving" class="headerlink" title="Seam carving"></a>Seam carving</h1><h3 id="算法原理"><a href="#算法原理" class="headerlink" title="算法原理"></a>算法原理</h3><p>Seam Carving: 与PPT的完全一致，先通过图像的梯度信息得到图像的能量分布，然后动态规划找出能量最小的路径并删除。</p>
-<p>具体在实现能量分布时，一开始使用二层嵌套，速度不是很好，之后使用numpy中的卷积函数进行了改进，速度与效果都得到了提升。</p>
-<p>Object Removal: 基本方法与Seam Carving一致，只是需要调整能量分布，每次为需要剪除的区域设置一个极低的能量值，从而使需要剪除的区域总是优先被去除。</p>
-<h3 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h3><h5 id="1-横向缩小"><a href="#1-横向缩小" class="headerlink" title="1.横向缩小"></a>1.横向缩小</h5><center>
-<img src="/2020/04/06/SeamCarving/3.jpg" alt="aspect_ratio" style="zoom:80%;">
-<br>原图
-</center>
-
-
-
-
-
-<img src="/2020/04/06/SeamCarving/33.jpg" alt="aspect_ratio" style="zoom:80%;">
-
-<img src="/2020/04/06/SeamCarving/34.jpg" alt="aspect_ratio" style="zoom:80%;">
-
-
-
-
-
-
-
-<h5 id="2-长宽比调整"><a href="#2-长宽比调整" class="headerlink" title="2.长宽比调整"></a>2.长宽比调整</h5><center>
-<img src="/2020/04/06/SeamCarving/3.jpg" alt="aspect_ratio" style="zoom:80%;">
-<br>原图
-</center>
-
-
-
-<center>
-<img src="/2020/04/06/SeamCarving/36.jpg" alt="aspect_ratio" style="zoom:80%;">
-<br>调整后
-</center>
-
-
-
-
-
-
-
-<h5 id="3-物体消除"><a href="#3-物体消除" class="headerlink" title="3.物体消除"></a>3.物体消除</h5><center>
-<img src="/2020/04/06/SeamCarving/4.jpg" alt="aspect_ratio" style="zoom:80%;">
-<br>原图
-</center>
-
-
-
-
-
-<center>
-<img src="/2020/04/06/SeamCarving/mask.jpg" alt="aspect_ratio" style="zoom:80%;">
-<br>mask
-</center>
-
-
-
-
-<center>
-<img src="/2020/04/06/SeamCarving/5.jpg" alt="aspect_ratio" style="zoom:80%;">
-<br>剪除后
-<br>可以看出由于大海的颜色差异，还是可以看出不自然的现象
-<br>但是远景的山就比较自然
-</center>
-
-
-
-
-
-
-
-<h3 id="不足"><a href="#不足" class="headerlink" title="不足"></a>不足</h3><ul>
-<li><p>算法运行比较慢，在示例图像运行时切除一次（one seam）的时间大约1-2秒。</p>
-</li>
-<li><p>对于有规则几何图像的图片，算法可能会使这些几何信息丢失，还是有可以改进的地方的。</p>
-</li>
-<li><p>由于每次剪除seam上有连续性的要求，每次剪除的线会有斜率的限制，可以看到物体消除中的示例就因为斜率的限制不得不剪除了一些不改丢失的部分。</p>
-</li>
-</ul>
-<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ol>
-<li><p><a href="https://zhuanlan.zhihu.com/p/38974520" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/38974520</a></p>
-</li>
-<li><p>Seam Carving for Content-Aware Image Resizing by Shai Avidan and Ariel Shamir</p>
-<p> ​    </p>
-</li>
-</ol>
-<h3 id="代码（附件seam-carving-py）"><a href="#代码（附件seam-carving-py）" class="headerlink" title="代码（附件seam_carving.py）"></a>代码（附件seam_carving.py）</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> skimage <span class="keyword">import</span> io</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> scipy.ndimage.filters <span class="keyword">import</span> convolve</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">count = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_energy</span><span class="params">(img, r, c)</span>:</span></span><br><span class="line">    <span class="comment"># calculate energy(too slow)</span></span><br><span class="line">    <span class="comment"># energy = np.zeros((r, c)).astype(int)</span></span><br><span class="line">    <span class="comment"># for k in range(3):</span></span><br><span class="line">    <span class="comment">#     for i in range(r):</span></span><br><span class="line">    <span class="comment">#         for j in range(c):</span></span><br><span class="line">    <span class="comment">#             gy = img[i + 1, j, k] - img[i - 1, j, k]</span></span><br><span class="line">    <span class="comment">#             gx = img[i, j + 1, k] - img[i, j - 1, k]</span></span><br><span class="line">    <span class="comment">#             energy[i, j] += abs(gx)</span></span><br><span class="line">    <span class="comment">#             energy[i, j] += abs(gy)</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># use filter to accelerate</span></span><br><span class="line">    fri = np.array([</span><br><span class="line">        [<span class="number">1.0</span>, <span class="number">2.0</span>, <span class="number">1.0</span>],</span><br><span class="line">        [<span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>],</span><br><span class="line">        [<span class="number">-1.0</span>, <span class="number">-2.0</span>, <span class="number">-1.0</span>],</span><br><span class="line">    ])</span><br><span class="line">    fci = np.array([</span><br><span class="line">        [<span class="number">1.0</span>, <span class="number">0.0</span>, <span class="number">-1.0</span>],</span><br><span class="line">        [<span class="number">2.0</span>, <span class="number">0.0</span>, <span class="number">-2.0</span>],</span><br><span class="line">        [<span class="number">1.0</span>, <span class="number">0.0</span>, <span class="number">-1.0</span>],</span><br><span class="line">    ])</span><br><span class="line">    fr, fc = [], []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">3</span>):</span><br><span class="line">        fr.append(fri)</span><br><span class="line">        fc.append(fci)</span><br><span class="line">    convolved = np.absolute(convolve(img, fc)) + np.absolute(convolve(img, fr))</span><br><span class="line">    energy = convolved.sum(axis=<span class="number">2</span>)</span><br><span class="line">    <span class="keyword">return</span> energy</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="comment"># DP back-track</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_back</span><span class="params">(energy, r, c)</span>:</span></span><br><span class="line">    back = np.zeros((r, c), dtype=int)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, r):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(c):</span><br><span class="line">            <span class="keyword">if</span> j == <span class="number">0</span>:</span><br><span class="line">                index = np.argmin(energy[i - <span class="number">1</span>, j: j + <span class="number">2</span>])</span><br><span class="line">                back[i, j] = j + index</span><br><span class="line">                energy[i, j] += energy[i - <span class="number">1</span>, j + index]</span><br><span class="line">            <span class="keyword">elif</span> j == c - <span class="number">1</span>:</span><br><span class="line">                index = np.argmin(energy[i - <span class="number">1</span>, j - <span class="number">1</span>: j + <span class="number">1</span>])</span><br><span class="line">                back[i, j] = j - <span class="number">1</span> + index</span><br><span class="line">                energy[i, j] += energy[i - <span class="number">1</span>, j - <span class="number">1</span> + index]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                index = np.argmin(energy[i - <span class="number">1</span>, j - <span class="number">1</span>: j + <span class="number">2</span>])</span><br><span class="line">                back[i, j] = j - <span class="number">1</span> + index</span><br><span class="line">                energy[i, j] += energy[i - <span class="number">1</span>, j - <span class="number">1</span> + index]</span><br><span class="line">    <span class="keyword">return</span> back</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">carve_column</span><span class="params">(img)</span>:</span></span><br><span class="line">    <span class="keyword">global</span> count</span><br><span class="line">    print(<span class="string">'carve_column:'</span>, count)</span><br><span class="line">    count += <span class="number">1</span></span><br><span class="line">    r = np.shape(img)[<span class="number">0</span>]</span><br><span class="line">    c = np.shape(img)[<span class="number">1</span>]</span><br><span class="line">    energy = get_energy(img, r, c)</span><br><span class="line">    back = get_back(energy, r, c)</span><br><span class="line">    j = np.argmin(energy[<span class="number">-1</span>])</span><br><span class="line">    delmask = np.ones((r, c), dtype=bool)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(r):</span><br><span class="line">        delmask[r - <span class="number">1</span> - i, j] = <span class="literal">False</span></span><br><span class="line">        j = back[r - <span class="number">1</span> - i, j]</span><br><span class="line">    img = img[delmask].reshape((r, c - <span class="number">1</span>, <span class="number">3</span>))</span><br><span class="line">    <span class="keyword">return</span> img</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">carve_column_obj</span><span class="params">(img, mask = None)</span>:</span></span><br><span class="line">    r = np.shape(img)[<span class="number">0</span>]</span><br><span class="line">    c = np.shape(img)[<span class="number">1</span>]</span><br><span class="line">    energy = get_energy(img, r, c)</span><br><span class="line">    <span class="comment"># Object Removal: change energy map</span></span><br><span class="line">    energy[np.where(mask &gt; <span class="number">0</span>)] *= <span class="number">-1000.0</span></span><br><span class="line">    back = get_back(energy, r, c)</span><br><span class="line">    j = np.argmin(energy[<span class="number">-1</span>])</span><br><span class="line">    delmask = np.ones((r, c), dtype=bool)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(r):</span><br><span class="line">        delmask[r - <span class="number">1</span> - i, j] = <span class="literal">False</span></span><br><span class="line">        j = back[r - <span class="number">1</span> - i, j]</span><br><span class="line">    img = img[delmask].reshape((r, c - <span class="number">1</span>, <span class="number">3</span>))</span><br><span class="line">    mask = mask[delmask].reshape((r, c - <span class="number">1</span>))</span><br><span class="line">    <span class="keyword">return</span> img, mask</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">aspect_ratio</span><span class="params">(img, newr, newc)</span>:</span></span><br><span class="line">    img = np.copy(img).astype(<span class="string">'float32'</span>)</span><br><span class="line">    r = np.shape(img)[<span class="number">0</span>]</span><br><span class="line">    c = np.shape(img)[<span class="number">1</span>]</span><br><span class="line">    <span class="comment"># 处理多剪除的方向</span></span><br><span class="line">    delta = c - newc - r + newr</span><br><span class="line">    num = <span class="number">0</span></span><br><span class="line">    <span class="keyword">if</span> delta &gt; <span class="number">0</span>:</span><br><span class="line">        num = r - newr</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(delta):</span><br><span class="line">            img = carve_column(img)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        num = c - newc</span><br><span class="line">        img = img.transpose(<span class="number">1</span>, <span class="number">0</span>, <span class="number">2</span>)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(-delta):</span><br><span class="line">            img = carve_column(img)</span><br><span class="line">        img = img.transpose(<span class="number">1</span>, <span class="number">0</span>, <span class="number">2</span>)</span><br><span class="line">    <span class="comment"># 交替剪除</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(num):</span><br><span class="line">        img = carve_column(img)</span><br><span class="line">        img = img.transpose(<span class="number">1</span>, <span class="number">0</span>, <span class="number">2</span>)</span><br><span class="line">        img = carve_column(img)</span><br><span class="line">        img = img.transpose(<span class="number">1</span>, <span class="number">0</span>, <span class="number">2</span>)</span><br><span class="line">    <span class="keyword">return</span> img</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">object_removal</span><span class="params">(img, mask)</span>:</span></span><br><span class="line">    img = img.astype(<span class="string">'float32'</span>)</span><br><span class="line">    <span class="keyword">while</span> len(np.where(mask &gt; <span class="number">0</span>)[<span class="number">0</span>]) &gt; <span class="number">0</span>:</span><br><span class="line">        print(<span class="string">'to bo removed:'</span>, len(np.where(mask &gt; <span class="number">0</span>)[<span class="number">0</span>]))</span><br><span class="line">        img, mask = carve_column_obj(img, mask)</span><br><span class="line">    <span class="keyword">return</span> img</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="comment"># aspect ratio adjust</span></span><br><span class="line">    <span class="comment"># img = io.imread('./4.jpg')</span></span><br><span class="line">    <span class="comment"># r = np.shape(img)[0]</span></span><br><span class="line">    <span class="comment"># c = np.shape(img)[1]</span></span><br><span class="line">    <span class="comment"># newr = r</span></span><br><span class="line">    <span class="comment"># newc = c - 100</span></span><br><span class="line">    <span class="comment"># io.imsave('./aspect_ratio.jpg', aspect_ratio(img, newr, newc))</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># object removal</span></span><br><span class="line">    img = io.imread(<span class="string">'./4.jpg'</span>)</span><br><span class="line">    mask = io.imread(<span class="string">'./mask.jpg'</span>)</span><br><span class="line">    io.imsave(<span class="string">'./remove_object.jpg'</span>, object_removal(img, mask))</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/06/why/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="wmhst7">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wmhst7's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/06/why/" class="post-title-link" itemprop="url">why</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-04-06 00:12:53 / Modified: 00:13:20" itemprop="dateCreated datePublished" datetime="2020-04-06T00:12:53+08:00">2020-04-06</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Why-cannot-deploy-new-post-to-my-blog"><a href="#Why-cannot-deploy-new-post-to-my-blog" class="headerlink" title="Why cannot deploy new post to my blog?"></a>Why cannot deploy new post to my blog?</h1>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
   
 
 
@@ -681,6 +436,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#拼音输入法"><span class="nav-number">1.</span> <span class="nav-text">拼音输入法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#算法的基本思路与实现"><span class="nav-number">1.1.</span> <span class="nav-text">算法的基本思路与实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题描述"><span class="nav-number">1.1.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#隐马尔科夫模型-HMM"><span class="nav-number">1.1.2.</span> <span class="nav-text">隐马尔科夫模型(HMM)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#维特比算法-Viterbi-Algorithm"><span class="nav-number">1.1.3.</span> <span class="nav-text">维特比算法(Viterbi Algorithm)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二元字模型的初步实现"><span class="nav-number">1.1.4.</span> <span class="nav-text">二元字模型的初步实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实验效果"><span class="nav-number">1.2.</span> <span class="nav-text">实验效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参数对比与性能分析"><span class="nav-number">1.3.</span> <span class="nav-text">参数对比与性能分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#改进方案"><span class="nav-number">1.4.</span> <span class="nav-text">改进方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#三元字模型"><span class="nav-number">1.4.1.</span> <span class="nav-text">三元字模型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#实验效果-1"><span class="nav-number">1.4.1.0.1.</span> <span class="nav-text">实验效果</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">1.5.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">1.6.</span> <span class="nav-text">代码</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#运行方法："><span class="nav-number">1.6.0.0.1.</span> <span class="nav-text">运行方法：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#清华云盘："><span class="nav-number">1.6.0.0.2.</span> <span class="nav-text">清华云盘：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#github：https-github-com-wmhst7-PinYin"><span class="nav-number">1.6.0.0.3.</span> <span class="nav-text">github：https:&#x2F;&#x2F;github.com&#x2F;wmhst7&#x2F;PinYin</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
