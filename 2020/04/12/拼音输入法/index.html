@@ -20,22 +20,22 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="拼音输入法算法的基本思路与实现问题描述输入一个拼音串，输出最有可能的一个汉字串，即拼音输入法。 例如：输入 1qing hua da xue  输出 1清华大学">
+  <meta name="description" content="拼音输入法算法的基本思路与实现问题描述输入一个拼音串，输出最有可能的一个汉字串，即拼音输入法。 例如：输入 1qing hua da xue 输出 1清华大学">
 <meta property="og:type" content="article">
-<meta property="og:title" content="拼音输入法">
-<meta property="og:url" content="http://yoursite.com/2020/04/11/%E6%8B%BC%E9%9F%B3%E8%BE%93%E5%85%A5%E6%B3%95/index.html">
+<meta property="og:title" content="基于隐马尔科夫模型的拼音输入法">
+<meta property="og:url" content="http://yoursite.com/2020/04/12/%E6%8B%BC%E9%9F%B3%E8%BE%93%E5%85%A5%E6%B3%95/index.html">
 <meta property="og:site_name" content="wmhst7&#39;s blog">
-<meta property="og:description" content="拼音输入法算法的基本思路与实现问题描述输入一个拼音串，输出最有可能的一个汉字串，即拼音输入法。 例如：输入 1qing hua da xue  输出 1清华大学">
+<meta property="og:description" content="拼音输入法算法的基本思路与实现问题描述输入一个拼音串，输出最有可能的一个汉字串，即拼音输入法。 例如：输入 1qing hua da xue 输出 1清华大学">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://yoursite.com/2020/04/11/%E6%8B%BC%E9%9F%B3%E8%BE%93%E5%85%A5%E6%B3%95/image-20200412012929047.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/11/%E6%8B%BC%E9%9F%B3%E8%BE%93%E5%85%A5%E6%B3%95/image-20200412012947671.png">
-<meta property="article:published_time" content="2020-04-11T14:11:52.624Z">
-<meta property="article:modified_time" content="2020-04-12T10:22:12.888Z">
+<meta property="og:image" content="http://yoursite.com/2020/04/12/%E6%8B%BC%E9%9F%B3%E8%BE%93%E5%85%A5%E6%B3%95/image-20200412012929047.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/12/%E6%8B%BC%E9%9F%B3%E8%BE%93%E5%85%A5%E6%B3%95/image-20200412012947671.png">
+<meta property="article:published_time" content="2020-04-12T10:28:07.000Z">
+<meta property="article:modified_time" content="2020-04-13T12:57:32.333Z">
 <meta property="article:author" content="wmhst7">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/04/11/%E6%8B%BC%E9%9F%B3%E8%BE%93%E5%85%A5%E6%B3%95/image-20200412012929047.png">
+<meta name="twitter:image" content="http://yoursite.com/2020/04/12/%E6%8B%BC%E9%9F%B3%E8%BE%93%E5%85%A5%E6%B3%95/image-20200412012929047.png">
 
-<link rel="canonical" href="http://yoursite.com/2020/04/11/%E6%8B%BC%E9%9F%B3%E8%BE%93%E5%85%A5%E6%B3%95/">
+<link rel="canonical" href="http://yoursite.com/2020/04/12/%E6%8B%BC%E9%9F%B3%E8%BE%93%E5%85%A5%E6%B3%95/">
 
 
 <script id="page-configurations">
@@ -48,7 +48,7 @@
   };
 </script>
 
-  <title>拼音输入法 | wmhst7's blog</title>
+  <title>基于隐马尔科夫模型的拼音输入法 | wmhst7's blog</title>
   
 
 
@@ -156,7 +156,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/11/%E6%8B%BC%E9%9F%B3%E8%BE%93%E5%85%A5%E6%B3%95/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/12/%E6%8B%BC%E9%9F%B3%E8%BE%93%E5%85%A5%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -169,7 +169,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          拼音输入法
+          基于隐马尔科夫模型的拼音输入法
         </h1>
 
         <div class="post-meta">
@@ -179,14 +179,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2020-04-11 22:11:52" itemprop="dateCreated datePublished" datetime="2020-04-11T22:11:52+08:00">2020-04-11</time>
+              <time title="Created: 2020-04-12 18:28:07" itemprop="dateCreated datePublished" datetime="2020-04-12T18:28:07+08:00">2020-04-12</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-04-12 18:22:12" itemprop="dateModified" datetime="2020-04-12T18:22:12+08:00">2020-04-12</time>
+                <time title="Modified: 2020-04-13 20:57:32" itemprop="dateModified" datetime="2020-04-13T20:57:32+08:00">2020-04-13</time>
               </span>
 
           
@@ -210,64 +210,63 @@
         <h1 id="拼音输入法"><a href="#拼音输入法" class="headerlink" title="拼音输入法"></a>拼音输入法</h1><h2 id="算法的基本思路与实现"><a href="#算法的基本思路与实现" class="headerlink" title="算法的基本思路与实现"></a>算法的基本思路与实现</h2><h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>输入一个拼音串，输出最有可能的一个汉字串，即拼音输入法。</p>
 <p>例如：输入</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">qing hua da xue</span><br></pre></td></tr></table></figure>
-
 <p>输出</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">清华大学</span><br></pre></td></tr></table></figure>
-
 <a id="more"></a>
-
 <h3 id="隐马尔科夫模型-HMM"><a href="#隐马尔科夫模型-HMM" class="headerlink" title="隐马尔科夫模型(HMM)"></a>隐马尔科夫模型(HMM)</h3><p>对于一个输入拼音串，每个拼音都可能有多个汉字对应。</p>
-<img src="/2020/04/11/%E6%8B%BC%E9%9F%B3%E8%BE%93%E5%85%A5%E6%B3%95/image-20200412012929047.png" alt="image-20200412012929047" style="zoom:50%;">
-
+<p><img src="/2020/04/12/%E6%8B%BC%E9%9F%B3%E8%BE%93%E5%85%A5%E6%B3%95/image-20200412012929047.png" alt="image-20200412012929047" style="zoom:50%;"></p>
 <p>因此我们需要从这些汉字的组合中选取最优的一个。</p>
 <p>我们可以由语料库（大量的句子）经过处理计数得到每个汉字出现的概率以及两个汉字同时相邻出现的概率，但是我们不能直接计数得到某个句子出现的概率，因此这个模型可以当做一个隐马尔科夫模型，每个汉字串就是它的一个状态。</p>
-<p>我们的目标就是使这个串的概率达到最大.<br>$$<br>max\prod_{i=1}^{n} P(w_i|w_{i-1})\<br>P(w_i|w_{i-1}) = \frac{Count(w_{i-1}w_i)}{Count(w_{i-1})}<br>$$</p>
-<p>值得一提的是，为了照顾到二元组出现次数为0的情况，我们可以对概率做平滑处理。<br>$$<br>P(w_i|w_{i-1}) = \lambda \frac{Count(w_{i-1}w_i)}{Count(w_{i-1})} + (1 - \lambda)P(w_{i})<br>$$<br>其中$\lambda$是一个人为规定的参数。</p>
+<p>我们的目标就是使这个串的概率达到最大.</p>
+<script type="math/tex; mode=display">
+max\prod_{i=1}^{n} P(w_i|w_{i-1})\\
+P(w_i|w_{i-1}) = \frac{Count(w_{i-1}w_i)}{Count(w_{i-1})}</script><p>值得一提的是，为了照顾到二元组出现次数为0的情况，我们可以对概率做平滑处理。</p>
+<script type="math/tex; mode=display">
+P(w_i|w_{i-1}) = \lambda \frac{Count(w_{i-1}w_i)}{Count(w_{i-1})} + (1 - \lambda)P(w_{i})</script><p>其中$\lambda$是一个人为规定的参数。</p>
 <p>除此之外我还对出现在句首的字符进行了统计，对句首字符概率进行了优化。</p>
 <h3 id="维特比算法-Viterbi-Algorithm"><a href="#维特比算法-Viterbi-Algorithm" class="headerlink" title="维特比算法(Viterbi Algorithm)"></a>维特比算法(Viterbi Algorithm)</h3><p>要求解这个HMM问题，我们需要使用维特比算法。</p>
 <p>维特比算法是一种动态规划算法，下图每一层的节点都与相邻的层的所有节点相连接，且汉字的二元概率可以看做两节点的距离，本质问题是求解起点到终点的最长路径。</p>
-<img src="/2020/04/11/%E6%8B%BC%E9%9F%B3%E8%BE%93%E5%85%A5%E6%B3%95/image-20200412012947671.png" alt="image-20200412012947671" style="width:90%;">
-
+<p><img src="/2020/04/12/%E6%8B%BC%E9%9F%B3%E8%BE%93%E5%85%A5%E6%B3%95/image-20200412012947671.png" alt="image-20200412012947671" style="width:90%;"></p>
 <p>我们首先对概率取对数，将概率的积变为概率对数的和，然后逐层应用维特比算法。</p>
 <p>容易看出，由于只有相邻层有边，我们不需要遍历所有的路径，对于当前层的某个节点，只需对前一层的节点进行遍历，找到前一层中到当前节点距离与其到起点距离之和最大的节点即可。</p>
 <h3 id="二元字模型的初步实现"><a href="#二元字模型的初步实现" class="headerlink" title="二元字模型的初步实现"></a>二元字模型的初步实现</h3><p>我定义了一个节点类</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">node</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, ch, pr, prev)</span>:</span></span><br><span class="line">        self.ch = ch</span><br><span class="line">        self.pr = pr</span><br><span class="line">        self.prev = prev</span><br></pre></td></tr></table></figure>
-
 <p>之后逐层遍历即可</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(pylist, lam=<span class="number">0.99</span>)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> py <span class="keyword">in</span> pylist:</span><br><span class="line">        <span class="keyword">if</span> py <span class="keyword">not</span> <span class="keyword">in</span> pch:</span><br><span class="line">            <span class="keyword">return</span> [<span class="string">'Wrong piyin'</span>]</span><br><span class="line">    nodes = []</span><br><span class="line"></span><br><span class="line">    <span class="comment"># first layer</span></span><br><span class="line">    nodes.append([node(x, fir_p.get(x, <span class="number">-25.0</span>), <span class="literal">None</span>) <span class="keyword">for</span> x <span class="keyword">in</span> pch[pylist[<span class="number">0</span>]]])</span><br><span class="line"></span><br><span class="line">    <span class="comment"># middle layers</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(pylist)):</span><br><span class="line">        <span class="keyword">if</span> i == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        nodes.append([node(x, <span class="number">0</span>, <span class="literal">None</span>) <span class="keyword">for</span> x <span class="keyword">in</span> pch[pylist[i]]])</span><br><span class="line">        <span class="keyword">for</span> nd <span class="keyword">in</span> nodes[i]:</span><br><span class="line">            nd.pr = nodes[i - <span class="number">1</span>][<span class="number">0</span>].pr + getpr(nodes[i - <span class="number">1</span>][<span class="number">0</span>].ch, nd.ch, lam)</span><br><span class="line">            nd.prev = nodes[i - <span class="number">1</span>][<span class="number">0</span>]</span><br><span class="line">            <span class="keyword">for</span> prend <span class="keyword">in</span> nodes[i - <span class="number">1</span>]:</span><br><span class="line">                <span class="keyword">if</span> prend.pr + getpr(prend.ch, nd.ch, lam) &gt; nd.pr:</span><br><span class="line">                    nd.pr = prend.pr + getpr(prend.ch, nd.ch, lam)</span><br><span class="line">                    nd.prev = prend</span><br><span class="line"></span><br><span class="line">    <span class="comment"># back propagation</span></span><br><span class="line">    nd = max(nodes[<span class="number">-1</span>], key=<span class="keyword">lambda</span> x: x.pr)</span><br><span class="line">    chs = []</span><br><span class="line">    <span class="keyword">while</span> nd <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">        chs.append(nd.ch)</span><br><span class="line">        nd = nd.prev</span><br><span class="line">    <span class="keyword">return</span> list(reversed(chs))</span><br></pre></td></tr></table></figure>
-
 <p>遍历完后在最后一层找到概率最大的一个节点，回溯便可以找到一条汉字串（已经记录了每个节点的前一个节点）。</p>
-<h2 id="实验效果"><a href="#实验效果" class="headerlink" title="实验效果"></a>实验效果</h2><table>
+<h2 id="实验效果"><a href="#实验效果" class="headerlink" title="实验效果"></a>实验效果</h2><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="center">测试集</th>
-<th align="center">句子数</th>
-<th align="center">字数</th>
-<th align="center">句正确率</th>
-<th align="center">字正确率</th>
+<th style="text-align:center">测试集</th>
+<th style="text-align:center">句子数</th>
+<th style="text-align:center">字数</th>
+<th style="text-align:center">句正确率</th>
+<th style="text-align:center">字正确率</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">test1</td>
-<td align="center">797</td>
-<td align="center">7471</td>
-<td align="center">27.85%</td>
-<td align="center">76.68%</td>
+<tbody>
+<tr>
+<td style="text-align:center">test1</td>
+<td style="text-align:center">797</td>
+<td style="text-align:center">7471</td>
+<td style="text-align:center">27.85%</td>
+<td style="text-align:center">76.68%</td>
 </tr>
 <tr>
-<td align="center">test2</td>
-<td align="center">334</td>
-<td align="center">3363</td>
-<td align="center">31.14%</td>
-<td align="center">79.54%</td>
+<td style="text-align:center">test2</td>
+<td style="text-align:center">334</td>
+<td style="text-align:center">3363</td>
+<td style="text-align:center">31.14%</td>
+<td style="text-align:center">79.54%</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>正确的例子：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ni zai gan shen me a tuan zhang</span><br><span class="line">你在干什么啊团长</span><br><span class="line">jing ji jian she he wen hua jian she tu chu le shi ba da jing shen de zhong yao xing</span><br><span class="line">经济建设和文化建设突出了十八大精神的重要性</span><br><span class="line">zhong guo pin kun di qu shi xian wang luo fu wu quan fu gai</span><br><span class="line">中国贫困地区实现网络服务全覆盖</span><br><span class="line">ren gong zhi neng dao lun hen you yi si</span><br><span class="line">人工智能导论很有意思</span><br><span class="line">mou ke xue de chao dian ci pao</span><br><span class="line">某科学的超电磁炮</span><br><span class="line">zhong guo gong chan dang yuan de chu xin he shi ming shi wei zhong guo ren min mou xing fu wei zhong hua min zu mou fu xing</span><br><span class="line">中国共产党员的初心和使命是为中国人民谋幸福为中华民族谋复兴</span><br></pre></td></tr></table></figure>
-
 <p>错误的例子：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">bei jing shi yi ge mei li de cheng shi</span><br><span class="line">北京市一个美丽的城市</span><br><span class="line">qing wa gua gua gua</span><br><span class="line">青瓦刮刮刮</span><br><span class="line">ni men que ding zhe xie qi guai de ju zi neng zheng que shu chu</span><br><span class="line">你们确定这些奇怪的橘子能正确输出</span><br><span class="line">ai yin si tan ti chu le guang yi xiang dui lun</span><br><span class="line">爱因斯坦提出了广益相对论</span><br><span class="line">zheng he xia xi yang wei qing hua ci de xun su jue qi ti gong le li shi qi ji</span><br><span class="line">整合下西洋为清华次的迅速崛起提供了历史契机</span><br><span class="line">xun xun mi mi leng leng qing qing qi qi can can qi qi</span><br><span class="line">寻寻觅觅冷冷清清气其灿灿其妻</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li><p>可以看到由于没有词库，可能会有一些奇怪的问题。</p>
 </li>
@@ -275,86 +274,98 @@
 </li>
 </ul>
 <h2 id="参数对比与性能分析"><a href="#参数对比与性能分析" class="headerlink" title="参数对比与性能分析"></a>参数对比与性能分析</h2><p>可以调整平滑率参数</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="center">test2</th>
-<th align="center">$\lambda=0.9 $</th>
-<th align="center">$\lambda=0.95$</th>
-<th align="center">$\lambda=0.99$</th>
-<th align="center">$\lambda=0.999$</th>
-<th align="center">$\lambda=0.9999$</th>
+<th style="text-align:center">test2</th>
+<th style="text-align:center">$\lambda=0.9 $</th>
+<th style="text-align:center">$\lambda=0.95$</th>
+<th style="text-align:center">$\lambda=0.99$</th>
+<th style="text-align:center">$\lambda=0.999$</th>
+<th style="text-align:center">$\lambda=0.9999$</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">句正确率%</td>
-<td align="center">30.24</td>
-<td align="center">30.54</td>
-<td align="center">30.54</td>
-<td align="center">30.54</td>
-<td align="center">30.54</td>
+<tbody>
+<tr>
+<td style="text-align:center">句正确率\%</td>
+<td style="text-align:center">30.24</td>
+<td style="text-align:center">30.54</td>
+<td style="text-align:center">30.54</td>
+<td style="text-align:center">30.54</td>
+<td style="text-align:center">30.54</td>
 </tr>
 <tr>
-<td align="center">字正确率%</td>
-<td align="center">79.54</td>
-<td align="center">79.36</td>
-<td align="center">79.48</td>
-<td align="center">79.66</td>
-<td align="center">79.69</td>
+<td style="text-align:center">字正确率\%</td>
+<td style="text-align:center">79.54</td>
+<td style="text-align:center">79.36</td>
+<td style="text-align:center">79.48</td>
+<td style="text-align:center">79.66</td>
+<td style="text-align:center">79.69</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="center">test2</th>
-<th align="center">$\lambda=0.6 $</th>
-<th align="center">$\lambda=0.7 $</th>
-<th align="center">$\lambda=0.8 $</th>
+<th style="text-align:center">test2</th>
+<th style="text-align:center">$\lambda=0.6 $</th>
+<th style="text-align:center">$\lambda=0.7 $</th>
+<th style="text-align:center">$\lambda=0.8 $</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">句正确率%</td>
-<td align="center">26.05</td>
-<td align="center">27.84</td>
-<td align="center">29.34</td>
+<tbody>
+<tr>
+<td style="text-align:center">句正确率\%</td>
+<td style="text-align:center">26.05</td>
+<td style="text-align:center">27.84</td>
+<td style="text-align:center">29.34</td>
 </tr>
 <tr>
-<td align="center">字正确率%</td>
-<td align="center">78.32</td>
-<td align="center">79.07</td>
-<td align="center">79.6</td>
+<td style="text-align:center">字正确率\%</td>
+<td style="text-align:center">78.32</td>
+<td style="text-align:center">79.07</td>
+<td style="text-align:center">79.6</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h2 id="改进方案"><a href="#改进方案" class="headerlink" title="改进方案"></a>改进方案</h2><h3 id="三元字模型"><a href="#三元字模型" class="headerlink" title="三元字模型"></a>三元字模型</h3><p>可以考虑改进二元字模型至三元字模型，这样我们需要先统计三元组的出现概率，然后改进维特比算法的实现。</p>
-<p>我们可以考虑在二元概率的基础乘上三元组的信息：<br>$$<br>P(w_3|w_1, w_2) = \frac{Count(w_1w_2w_3)}{Count(w_1w_2)}P(w_3|w_2)<br>$$</p>
-<h5 id="实验效果-1"><a href="#实验效果-1" class="headerlink" title="实验效果"></a>实验效果</h5><table>
+<p>我们可以考虑在二元概率的基础乘上三元组的信息：</p>
+<script type="math/tex; mode=display">
+P(w_3|w_1, w_2) = \frac{Count(w_1w_2w_3)}{Count(w_1w_2)}P(w_3|w_2)</script><h5 id="实验效果-1"><a href="#实验效果-1" class="headerlink" title="实验效果"></a>实验效果</h5><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="center">测试集</th>
-<th align="center">正确句子/句子数</th>
-<th align="center">正确字数/字数</th>
-<th align="center">句正确率</th>
-<th align="center">字正确率</th>
+<th style="text-align:center">测试集</th>
+<th style="text-align:center">正确句子/句子数</th>
+<th style="text-align:center">正确字数/字数</th>
+<th style="text-align:center">句正确率</th>
+<th style="text-align:center">字正确率</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">test1</td>
-<td align="center">342/797</td>
-<td align="center">6206/7471</td>
-<td align="center">42.91%</td>
-<td align="center">83.07%</td>
+<tbody>
+<tr>
+<td style="text-align:center">test1</td>
+<td style="text-align:center">342/797</td>
+<td style="text-align:center">6206/7471</td>
+<td style="text-align:center">42.91%</td>
+<td style="text-align:center">83.07%</td>
 </tr>
 <tr>
-<td align="center">test2</td>
-<td align="center">175/334</td>
-<td align="center">2951/3363</td>
-<td align="center">52.4%</td>
-<td align="center">86.68%</td>
+<td style="text-align:center">test2</td>
+<td style="text-align:center">175/334</td>
+<td style="text-align:center">2951/3363</td>
+<td style="text-align:center">52.4%</td>
+<td style="text-align:center">86.68%</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>一些比二元输入法有明显提升的例子：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">zheng he xia xi yang wei qing hua ci de xun su jue qi ti gong le li shi qi ji</span><br><span class="line">郑和下西洋为青花瓷的迅速崛起提供了历史契机</span><br><span class="line">qu nan ji chi mi fen kai you bu</span><br><span class="line">去南极吃米粉开优步</span><br><span class="line">tan tan jian jian neng neng fou fou ding ding lv</span><br><span class="line">碳碳键键能能否否定定律</span><br><span class="line">jing zhuang ti you tong xin de xian wei xi bao ceng zu cheng</span><br><span class="line">晶状体有通信的纤维细胞层组成</span><br><span class="line">ting che zuo ai feng lin wan</span><br><span class="line">停车坐爱枫林晚</span><br><span class="line">xiao ji ji ji ji ji</span><br><span class="line">小鸡叽叽叽叽</span><br><span class="line">chi ma ma xiang</span><br><span class="line">吃嘛嘛香</span><br></pre></td></tr></table></figure>
-
 <p>晶状体、青花瓷等三字短语在加入三元信息后能很容易的分辨，可以看到提升的效果还是比较明显的。</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
 <li>语料库对算法表现的影响是决定性的，本次训练所用的是新浪新闻文本数据，因此新闻用词比较多，对新闻常见字词的偏向度较高，对于诗句这种没有出现过的文本可以说是完全不适合的。</li>
@@ -365,10 +376,8 @@
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>支持命令行形式提供输入文件名和输出文件名并运行程序</p>
 <p>输入文件范例(./data/input_example.txt)：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">yi xi jin ping tong zhi wei zong shu ji de dang zhong yang</span><br><span class="line">zou zhong guo te se she hui zhu yi dao lu</span><br><span class="line">hu lian wang chan ye you ju da qian li</span><br><span class="line">zhong guo pin kun di qu shi xian wang luo fu wu quan fu gai</span><br><span class="line">zou chu qing hua da xue te se de shi jie yi liu da xue dao lu</span><br><span class="line">Ma shao ping lao shi ru shi shuo</span><br><span class="line">Qing hua da xue de ren gong zhi neng dao lun ke cheng shi fen de you qu</span><br><span class="line">huan ying lai dao wang zhe rong yao</span><br></pre></td></tr></table></figure>
-
 <p>输出文件范例(./data/ouput_example.txt)：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">以习近平同志为总书记的党中央</span><br><span class="line">走中国特色社会主义道路</span><br><span class="line">互联网产业有巨大潜力</span><br><span class="line">中国贫困地区实现网络服务全覆盖</span><br><span class="line">走出清华大学特色的世界一流大学道路</span><br><span class="line">马少平老师如是说</span><br><span class="line">清华大学的人工智能导论课程十分的有趣</span><br><span class="line">欢迎来到王者荣耀</span><br></pre></td></tr></table></figure>
-
 <h5 id="运行方法："><a href="#运行方法：" class="headerlink" title="运行方法："></a>运行方法：</h5><p>二元模型: python pinyin ../data/input.txt ../data/output.txt</p>
 <p>三元模型: python pinyin3 ../data/input.txt ../data/output.txt</p>
 <h5 id="清华云盘：https-cloud-tsinghua-edu-cn-d-c9542280e3a94b5ebd5c"><a href="#清华云盘：https-cloud-tsinghua-edu-cn-d-c9542280e3a94b5ebd5c" class="headerlink" title="清华云盘：https://cloud.tsinghua.edu.cn/d/c9542280e3a94b5ebd5c/"></a>清华云盘：<a href="https://cloud.tsinghua.edu.cn/d/c9542280e3a94b5ebd5c/" target="_blank" rel="noopener">https://cloud.tsinghua.edu.cn/d/c9542280e3a94b5ebd5c/</a></h5><h5 id="github：https-github-com-wmhst7-PinYin"><a href="#github：https-github-com-wmhst7-PinYin" class="headerlink" title="github：https://github.com/wmhst7/PinYin"></a>github：<a href="https://github.com/wmhst7/PinYin" target="_blank" rel="noopener">https://github.com/wmhst7/PinYin</a></h5><p>(github因文件大小限制，无三元模型所需文件)</p>
@@ -599,6 +608,61 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
