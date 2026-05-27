@@ -55,8 +55,8 @@
     text-align: left;
   }
   .avatar {
-    width: 128px;
-    height: 128px;
+    width: 148px;
+    height: 148px;
     border-radius: 50%;
     object-fit: cover;
     background: var(--soft);
@@ -72,12 +72,15 @@
     font-weight: 400;
     letter-spacing: 0;
     line-height: 1.02;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 13px;
   }
   .name-cn {
-    margin-top: 8px;
     color: var(--muted);
     font-family: var(--font-sans);
-    font-size: 15px;
+    font-size: 17px;
     font-weight: 300;
   }
   .links {
@@ -291,7 +294,7 @@
       gap: 22px;
       margin-bottom: 58px;
     }
-    .avatar { width: 96px; height: 96px; }
+    .avatar { width: 108px; height: 108px; }
     h1 { font-size: 35px; }
     .links { gap: 12px; }
     .pub-card { grid-template-columns: 1fr; gap: 14px; }
@@ -317,8 +320,7 @@
     <header class="hero">
       <img class="avatar" src="assets/avatar.jpg" alt="Mingheng Wu">
       <div>
-        <h1>Mingheng Wu</h1>
-        <div class="name-cn">吴明恒</div>
+        <h1>Mingheng Wu <span class="name-cn">吴明恒</span></h1>
         <div class="links">
           <a href="https://www.linkedin.com/in/minghengwu/" target="_blank" rel="noopener">LinkedIn</a>
           <a href="https://scholar.google.com/citations?user=5NWA9ikAAAAJ&hl=en" target="_blank" rel="noopener">Google&nbsp;Scholar</a>
