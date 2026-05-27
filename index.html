@@ -8,7 +8,7 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>M</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Crimson+Pro:ital,wght@0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --text: #2d333b;
@@ -38,82 +38,61 @@
 
   /* ============ Hero ============ */
   .hero {
-    max-width: 660px;
-    margin: 0 auto 74px;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 34px;
+    margin: 0 0 70px;
+    text-align: left;
   }
   .avatar {
-    width: 152px;
-    height: 152px;
+    width: 118px;
+    height: 118px;
     border-radius: 50%;
     object-fit: cover;
     background: var(--soft);
-    border: 4px solid #fff;
-    box-shadow: 0 0 0 1px var(--border), 0 8px 24px rgba(31,35,40,0.08);
+    box-shadow: 0 1px 8px rgba(31,35,40,0.08);
     transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-    margin-bottom: 24px;
+    flex-shrink: 0;
   }
   .avatar:hover { transform: scale(1.02) rotate(-1deg); }
   h1 {
     margin: 0;
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-    font-size: 34px;
-    font-weight: 700;
+    font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+    font-size: 44px;
+    font-weight: 600;
     letter-spacing: 0;
-    line-height: 1.1;
+    line-height: 0.98;
   }
   .name-cn {
-    margin-top: 6px;
+    margin-top: 8px;
     color: var(--muted);
-    font-size: 21px;
-    font-weight: 500;
-  }
-  .subtitle {
-    color: var(--muted);
-    font-size: 16px;
-    margin-top: 20px;
-  }
-  .subtitle strong { color: var(--text); font-weight: 600; }
-  .location {
-    color: var(--faint);
-    font-size: 13.5px;
-    margin-top: 6px;
-    margin-bottom: 14px;
-    letter-spacing: 0.02em;
+    font-family: "Songti SC", "STSong", "Noto Serif CJK SC", serif;
+    font-size: 19px;
+    font-weight: 400;
   }
   .links {
-    margin-top: 22px;
+    margin-top: 18px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
+    align-items: baseline;
+    gap: 14px;
   }
   .links a {
-    color: var(--muted);
+    color: var(--accent);
     text-decoration: none;
-    font-size: 13.5px;
-    font-weight: 600;
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    padding: 8px 16px;
-    background: #fff;
-    transition: border-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.15s ease;
   }
   .links a:hover {
-    color: var(--accent);
-    border-color: #b6cdfb;
-    box-shadow: 0 3px 12px rgba(47,111,223,0.1);
-    text-decoration: none;
+    color: var(--text);
+    text-decoration: underline;
   }
   .email-text {
     color: var(--muted);
-    font-size: 13.5px;
-    font-weight: 600;
+    font-size: 14px;
+    font-weight: 500;
     user-select: text;
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    padding: 8px 16px;
-    background: #fff;
   }
   .email-text .token {
     color: var(--faint);
@@ -166,18 +145,15 @@
   .role-line {
     display: flex;
     align-items: center;
-    gap: 16px;
-    margin-bottom: 8px;
+    gap: 18px;
+    margin-bottom: 7px;
   }
   .role-logo {
-    width: 52px;
-    height: 52px;
-    border-radius: 12px;
+    width: 54px;
+    height: 54px;
     object-fit: contain;
-    background: #fff;
+    background: transparent;
     flex-shrink: 0;
-    box-shadow: 0 0 0 1px var(--border), 0 4px 14px rgba(31,35,40,0.07);
-    padding: 6px;
   }
   .role {
     font-weight: 600;
@@ -187,13 +163,13 @@
     color: var(--muted);
     font-size: 14.5px;
     margin-bottom: 6px;
-    padding-left: 68px;
+    padding-left: 72px;
   }
   .desc {
     font-size: 14.5px;
     color: #2a2a2a;
     line-height: 1.65;
-    padding-left: 68px;
+    padding-left: 72px;
   }
   .dot-active {
     display: inline-block;
@@ -281,23 +257,32 @@
     font-size: 12.5px;
     text-align: center;
     font-style: italic;
-    font-family: "Crimson Pro", Georgia, serif;
+    font-family: "Cormorant Garamond", Georgia, serif;
   }
 
   /* ============ Mobile ============ */
   @media (max-width: 640px) {
     .container { padding: 44px 22px 64px; }
-    .hero { margin-bottom: 58px; }
-    .avatar { width: 140px; height: 140px; }
-    h1 { font-size: 32px; }
-    .links { justify-content: center; gap: 10px; }
+    .hero {
+      gap: 22px;
+      margin-bottom: 58px;
+    }
+    .avatar { width: 94px; height: 94px; }
+    h1 { font-size: 38px; }
+    .links { gap: 12px; }
     .pub-card { grid-template-columns: 1fr; gap: 14px; }
     .pub-figure { max-width: 320px; }
     .entry { grid-template-columns: 1fr; gap: 6px; }
     .entry .date { padding-top: 0; margin-bottom: 4px; }
     h2 { font-size: 21px; }
-    .role-logo { width: 46px; height: 46px; }
-    .org, .desc { padding-left: 62px; }
+    .role-logo { width: 48px; height: 48px; }
+    .org, .desc { padding-left: 66px; }
+  }
+  @media (max-width: 430px) {
+    .hero {
+      flex-direction: column;
+      align-items: flex-start;
+    }
   }
 </style>
 </head>
@@ -310,8 +295,6 @@
       <div>
         <h1>Mingheng Wu</h1>
         <div class="name-cn">吴明恒</div>
-        <div class="subtitle">Research Scientist, <strong>ByteDance Seed</strong></div>
-        <div class="location">BELLEVUE, WA</div>
         <div class="links">
           <a href="https://www.linkedin.com/in/minghengwu/" target="_blank" rel="noopener">LinkedIn</a>
           <a href="https://scholar.google.com/citations?user=5NWA9ikAAAAJ&hl=en" target="_blank" rel="noopener">Google&nbsp;Scholar</a>
@@ -376,7 +359,7 @@
         <div class="date">2025 &mdash; Now</div>
         <div class="entry-body">
           <div class="role-line">
-            <img class="role-logo" src="https://www.google.com/s2/favicons?domain=bytedance.com&sz=256" alt="ByteDance Seed logo">
+            <img class="role-logo" src="assets/logos/bytedance.svg" alt="ByteDance Seed logo">
             <span class="role">Research Scientist <span class="dot-active" title="Current"></span></span>
           </div>
           <div class="org">ByteDance Seed &middot; Bellevue, WA</div>
@@ -393,7 +376,7 @@
         <div class="date">2024</div>
         <div class="entry-body">
           <div class="role-line">
-            <img class="role-logo" src="https://www.google.com/s2/favicons?domain=bytedance.com&sz=256" alt="ByteDance logo">
+            <img class="role-logo" src="assets/logos/bytedance.svg" alt="ByteDance logo">
             <span class="role">Research Engineer Intern</span>
           </div>
           <div class="org">ByteDance &middot; Bellevue, WA</div>
@@ -419,7 +402,7 @@
         <div class="date">2023</div>
         <div class="entry-body">
           <div class="role-line">
-            <img class="role-logo" src="https://www.google.com/s2/favicons?domain=microsoft.com&sz=256" alt="Microsoft logo">
+            <img class="role-logo" src="assets/logos/microsoft.svg" alt="Microsoft logo">
             <span class="role">Machine Learning Engineer Intern</span>
           </div>
           <div class="org">Microsoft &middot; Beijing, China</div>
@@ -433,7 +416,7 @@
         <div class="date">2021 &mdash; 2022</div>
         <div class="entry-body">
           <div class="role-line">
-            <img class="role-logo" src="https://www.google.com/s2/favicons?domain=microsoft.com&sz=256" alt="Microsoft Research logo">
+            <img class="role-logo" src="assets/logos/microsoft.svg" alt="Microsoft Research logo">
             <span class="role">Research Intern</span>
           </div>
           <div class="org">Microsoft Research &middot; Beijing, China</div>
@@ -443,17 +426,6 @@
         </div>
       </div>
 
-      <div class="entry">
-        <div class="date">2021</div>
-        <div class="entry-body">
-          <div class="role-line">
-            <img class="role-logo" src="https://www.google.com/s2/favicons?domain=hotstar.com&sz=256" alt="Disney+ Hotstar logo">
-            <span class="role">Machine Learning Engineer Intern</span>
-          </div>
-          <div class="org">Disney+ Hotstar</div>
-          <div class="desc">Deep-learning video understanding models.</div>
-        </div>
-      </div>
     </section>
 
     <!-- ============ Education ============ -->
@@ -464,7 +436,7 @@
         <div class="date">2023 &mdash; 2025</div>
         <div class="entry-body">
           <div class="role-line">
-            <img class="role-logo" src="https://www.google.com/s2/favicons?domain=washington.edu&sz=256" alt="University of Washington logo">
+            <img class="role-logo" src="assets/logos/washington.svg" alt="University of Washington logo">
             <span class="role">M.S. in Computer Science</span>
           </div>
           <div class="org">University of Washington</div>
@@ -475,7 +447,7 @@
         <div class="date">2022 &mdash; 2025</div>
         <div class="entry-body">
           <div class="role-line">
-            <img class="role-logo" src="https://www.google.com/s2/favicons?domain=tsinghua.edu.cn&sz=256" alt="Tsinghua University logo">
+            <img class="role-logo" src="assets/logos/tsinghua.svg" alt="Tsinghua University logo">
             <span class="role">M.S. in Computer Science</span>
           </div>
           <div class="org">Tsinghua University &middot; Dual Degree</div>
@@ -486,7 +458,7 @@
         <div class="date">2018 &mdash; 2022</div>
         <div class="entry-body">
           <div class="role-line">
-            <img class="role-logo" src="https://www.google.com/s2/favicons?domain=tsinghua.edu.cn&sz=256" alt="Tsinghua University logo">
+            <img class="role-logo" src="assets/logos/tsinghua.svg" alt="Tsinghua University logo">
             <span class="role">B.S. in Computer Science and Technology</span>
           </div>
           <div class="org">Tsinghua University</div>
