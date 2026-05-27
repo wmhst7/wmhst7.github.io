@@ -182,6 +182,15 @@
     width: 64px;
     height: 64px;
   }
+  .logo-pair {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .logo-pair .role-logo {
+    width: 42px;
+    height: 42px;
+  }
   .role {
     font-weight: 500;
     font-size: var(--fs-title);
@@ -304,6 +313,8 @@
     .role-logo { width: 54px; height: 54px; }
     .logo-bytedance, .logo-qianxiang { width: 56px; height: 56px; }
     .logo-uw, .logo-tsinghua { width: 56px; height: 56px; }
+    .logo-pair { gap: 6px; }
+    .logo-pair .role-logo { width: 34px; height: 34px; }
   }
   @media (max-width: 430px) {
     .hero {
@@ -334,7 +345,7 @@
     <section>
       <h2>About</h2>
       <p class="intro">
-        I am a Research Scientist at <a class="text-link" href="https://seed.bytedance.com/en/" target="_blank" rel="noopener"><strong>ByteDance Seed</strong></a>, working on systems for large-scale language models. My work focuses on scaling LLM pretraining through PyTorch-native graph compilation, distributed training optimization, performance modeling, and heterogeneous inference systems. During my master's studies, I was advised by <a class="text-link" href="https://en.wikipedia.org/wiki/Yunhao_Liu" target="_blank" rel="noopener"><strong>Yunhao Liu</strong></a>. I received my M.S. from the <strong>University of Washington</strong> and my B.S. from <strong>Tsinghua University</strong>.
+        I am a Research Scientist at <a class="text-link" href="https://seed.bytedance.com/en/" target="_blank" rel="noopener"><strong>ByteDance Seed</strong></a>, working on systems for large-scale language models. My work focuses on scaling LLM pretraining through PyTorch-native graph compilation, distributed training optimization, performance modeling, and heterogeneous inference systems. During my master's studies, I was advised by <a class="text-link" href="https://en.wikipedia.org/wiki/Yunhao_Liu" target="_blank" rel="noopener"><strong>Yunhao Liu</strong></a>. I received my dual M.S. degree from the <strong>University of Washington</strong> and <strong>Tsinghua University</strong>, and my B.S. from <strong>Tsinghua University</strong>.
       </p>
     </section>
 
@@ -448,21 +459,14 @@
 
       <div class="entry">
         <div class="entry-logo">
-          <img class="role-logo logo-uw" src="assets/logos/washington.svg" alt="University of Washington logo">
+          <div class="logo-pair" aria-label="University of Washington and Tsinghua University logos">
+            <img class="role-logo logo-uw" src="assets/logos/washington.svg" alt="University of Washington logo">
+            <img class="role-logo logo-tsinghua" src="assets/logos/tsinghua.svg" alt="Tsinghua University logo">
+          </div>
         </div>
         <div class="entry-body">
           <div class="role">M.S. in Computer Science</div>
-          <div class="meta"><strong>University of Washington</strong> &middot; 2023 &mdash; 2025</div>
-        </div>
-      </div>
-
-      <div class="entry">
-        <div class="entry-logo">
-          <img class="role-logo logo-tsinghua" src="assets/logos/tsinghua.svg" alt="Tsinghua University logo">
-        </div>
-        <div class="entry-body">
-          <div class="role">M.S. in Computer Science</div>
-          <div class="meta"><strong>Tsinghua University</strong> &middot; Dual Degree &middot; 2022 &mdash; 2025</div>
+          <div class="meta"><strong>University of Washington</strong> &amp; <strong>Tsinghua University</strong> &middot; Dual Degree &middot; 2022 &mdash; 2025</div>
         </div>
       </div>
 
