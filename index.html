@@ -8,16 +8,16 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>M</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
     --text: #191918;
-    --muted: #66635d;
-    --faint: #948d84;
-    --soft: #f3f1ed;
-    --accent: #8b4d3a;
-    --bg: #fdfbf7;
-    --border: #dfdad1;
+    --muted: #5f5f5a;
+    --faint: #8a8882;
+    --soft: #f7f7f5;
+    --accent: #7f4a3a;
+    --bg: #fff;
+    --border: #e8e3dc;
     --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", sans-serif;
   }
   * { box-sizing: border-box; }
@@ -28,26 +28,27 @@
     color: var(--text);
     font-family: var(--font-sans);
     font-size: 16px;
+    font-weight: 400;
     line-height: 1.65;
   }
 
   .container {
-    max-width: 760px;
+    max-width: 940px;
     margin: 0 auto;
-    padding: 56px 32px 88px;
+    padding: 64px 40px 96px;
   }
 
   /* ============ Hero ============ */
   .hero {
     display: flex;
     align-items: center;
-    gap: 34px;
-    margin: 0 0 72px;
+    gap: 42px;
+    margin: 0 0 82px;
     text-align: left;
   }
   .avatar {
-    width: 108px;
-    height: 108px;
+    width: 128px;
+    height: 128px;
     border-radius: 50%;
     object-fit: cover;
     background: var(--soft);
@@ -60,7 +61,7 @@
     margin: 0;
     font-family: var(--font-sans);
     font-size: 43px;
-    font-weight: 650;
+    font-weight: 500;
     letter-spacing: 0;
     line-height: 1.02;
   }
@@ -69,7 +70,7 @@
     color: var(--muted);
     font-family: var(--font-sans);
     font-size: 15px;
-    font-weight: 400;
+    font-weight: 300;
   }
   .links {
     margin-top: 18px;
@@ -82,7 +83,7 @@
     color: var(--text);
     text-decoration: none;
     font-size: 13.5px;
-    font-weight: 500;
+    font-weight: 400;
     transition: color 0.15s ease;
   }
   .links a:hover {
@@ -92,7 +93,7 @@
   .email-text {
     color: var(--muted);
     font-size: 13.5px;
-    font-weight: 500;
+    font-weight: 400;
     user-select: text;
   }
   .email-text .token {
@@ -104,18 +105,30 @@
   /* ============ Sections ============ */
   h2 {
     font-family: var(--font-sans);
-    font-size: 15px;
+    font-size: 14px;
     color: var(--text);
-    font-weight: 600;
+    font-weight: 500;
     font-style: normal;
-    margin: 70px 0 26px;
-    padding-top: 14px;
-    border-top: 1px solid var(--border);
+    margin: 76px 0 24px;
+    padding-top: 0;
+    border-top: 0;
     letter-spacing: 0;
   }
   p { margin: 0 0 14px; }
   a { color: var(--accent); text-decoration: none; }
   a:hover { text-decoration: underline; }
+  strong { font-weight: 600; }
+  .intro {
+    max-width: 760px;
+  }
+  .text-link {
+    color: var(--text);
+    border-bottom: 0;
+  }
+  .text-link:hover {
+    color: var(--accent);
+    text-decoration: none;
+  }
   em.work { font-style: italic; color: var(--text); }
 
   /* ============ Entry rows ============ */
@@ -151,7 +164,7 @@
     height: 64px;
   }
   .role {
-    font-weight: 600;
+    font-weight: 500;
     font-size: 15.5px;
     line-height: 1.35;
   }
@@ -162,7 +175,7 @@
   }
   .meta strong {
     color: var(--text);
-    font-weight: 600;
+    font-weight: 500;
   }
   .desc {
     font-size: 13.5px;
@@ -173,7 +186,7 @@
   .current-label {
     color: var(--accent);
     font-size: 12.5px;
-    font-weight: 600;
+    font-weight: 500;
     margin-left: 6px;
     vertical-align: 1px;
   }
@@ -184,12 +197,12 @@
   }
   .pub-card {
     display: grid;
-    grid-template-columns: 176px 1fr;
-    gap: 24px;
+    grid-template-columns: 300px 1fr;
+    gap: 32px;
     align-items: start;
   }
   .pub .title {
-    font-weight: 600;
+    font-weight: 500;
     font-size: 16px;
     margin-bottom: 9px;
     line-height: 1.38;
@@ -218,7 +231,7 @@
     border: 1px solid var(--border);
     border-radius: 3px;
     vertical-align: middle;
-    font-weight: 600;
+    font-weight: 500;
     letter-spacing: 0;
     text-transform: uppercase;
   }
@@ -234,7 +247,7 @@
     border-radius: 5px;
     overflow: hidden;
     background: #fff;
-    max-width: 176px;
+    max-width: 300px;
   }
   .pub-figure img {
     display: block;
@@ -245,8 +258,8 @@
   /* ============ Footer ============ */
   footer {
     margin-top: 80px;
-    padding-top: 24px;
-    border-top: 1px solid var(--border);
+    padding-top: 0;
+    border-top: 0;
     color: var(--faint);
     font-size: 12.5px;
     text-align: center;
@@ -261,7 +274,7 @@
       gap: 22px;
       margin-bottom: 58px;
     }
-    .avatar { width: 92px; height: 92px; }
+    .avatar { width: 96px; height: 96px; }
     h1 { font-size: 34px; }
     .links { gap: 12px; }
     .pub-card { grid-template-columns: 1fr; gap: 14px; }
@@ -301,13 +314,8 @@
     <!-- ============ About ============ -->
     <section>
       <h2>About</h2>
-      <p>
-        I am a Research Scientist at <strong>ByteDance Seed</strong>, building systems
-        for large-scale language-model training and inference.
-      </p>
-      <p>
-        I received my M.S. in Computer Science from the <strong>University of Washington</strong>
-        and my B.S. in Computer Science and Technology from <strong>Tsinghua University</strong>.
+      <p class="intro">
+        Mingheng Wu is a Research Scientist at <a class="text-link" href="https://seed.bytedance.com/en/" target="_blank" rel="noopener"><strong>ByteDance Seed</strong></a>, working on systems for large-scale language models. His work focuses on scaling LLM pretraining through PyTorch-native graph compilation, distributed training optimization, performance modeling, and heterogeneous inference systems. He received his M.S. from the <strong>University of Washington</strong> and his B.S. from <strong>Tsinghua University</strong>.
       </p>
     </section>
 
@@ -354,7 +362,7 @@
         </div>
         <div class="entry-body">
           <div class="role">Research Scientist <span class="current-label">✨ current</span></div>
-          <div class="meta"><strong>ByteDance Seed</strong> &middot; Bellevue, WA &middot; 2025 &mdash; Now</div>
+          <div class="meta"><a class="text-link" href="https://seed.bytedance.com/en/" target="_blank" rel="noopener"><strong>ByteDance Seed</strong></a> &middot; Bellevue, WA &middot; 2025 &mdash; Now</div>
           <div class="desc">
             Scaling LLM pre-training systems, PyTorch-native graph compilation, and
             performance modeling. Built <em class="work">Charon</em>, a simulator for
