@@ -13,4 +13,5 @@ Keep `index.html` at the repository root because GitHub Pages serves it as the h
 Logo notes:
 - `assets/logos/tsinghua.svg` comes from Wikimedia Commons' public-domain Tsinghua University logo file.
 - `assets/logos/washington.svg` comes from Wikimedia Commons' University of Washington Block W logo file.
-- `assets/logos/bytedance-wordmark.svg` comes from Wikimedia Commons' ByteDance logo file.
+- `assets/logos/bytedance.svg` is the mark-only portion of Wikimedia Commons' ByteDance logo file.
+- `assets/logos/qianxiang.svg` is a mark-only vector redraw from the official Metabit Trading / 乾象投资 website logo.
