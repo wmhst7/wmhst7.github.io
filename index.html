@@ -8,16 +8,16 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>M</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400..700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --text: #2d333b;
-    --muted: #646d76;
-    --faint: #8c959f;
-    --soft: #f6f8fa;
-    --accent: #2f6fdf;
-    --bg: #fff;
-    --border: #d8dee4;
+    --text: #191919;
+    --muted: #625d55;
+    --faint: #8f877c;
+    --soft: #f4efe7;
+    --accent: #a64f36;
+    --bg: #fbf8f2;
+    --border: #ded5c8;
   }
   * { box-sizing: border-box; }
   html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; scroll-behavior: smooth; }
@@ -31,43 +31,43 @@
   }
 
   .container {
-    max-width: 760px;
+    max-width: 790px;
     margin: 0 auto;
-    padding: 42px 28px 88px;
+    padding: 56px 30px 88px;
   }
 
   /* ============ Hero ============ */
   .hero {
     display: flex;
     align-items: center;
-    gap: 34px;
-    margin: 0 0 70px;
+    gap: 36px;
+    margin: 0 0 74px;
     text-align: left;
   }
   .avatar {
-    width: 118px;
-    height: 118px;
+    width: 116px;
+    height: 116px;
     border-radius: 50%;
     object-fit: cover;
     background: var(--soft);
-    box-shadow: 0 1px 8px rgba(31,35,40,0.08);
+    box-shadow: 0 1px 10px rgba(25,25,25,0.08);
     transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
     flex-shrink: 0;
   }
   .avatar:hover { transform: scale(1.02) rotate(-1deg); }
   h1 {
     margin: 0;
-    font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
-    font-size: 44px;
-    font-weight: 600;
-    letter-spacing: 0;
-    line-height: 0.98;
+    font-family: "Newsreader", Georgia, "Times New Roman", serif;
+    font-size: 48px;
+    font-weight: 520;
+    letter-spacing: -0.01em;
+    line-height: 0.96;
   }
   .name-cn {
-    margin-top: 8px;
+    margin-top: 10px;
     color: var(--muted);
     font-family: "Songti SC", "STSong", "Noto Serif CJK SC", serif;
-    font-size: 19px;
+    font-size: 18px;
     font-weight: 400;
   }
   .links {
@@ -75,22 +75,22 @@
     display: flex;
     flex-wrap: wrap;
     align-items: baseline;
-    gap: 14px;
+    gap: 15px;
   }
   .links a {
-    color: var(--accent);
+    color: var(--text);
     text-decoration: none;
-    font-size: 14px;
+    font-size: 13.5px;
     font-weight: 500;
     transition: color 0.15s ease;
   }
   .links a:hover {
-    color: var(--text);
+    color: var(--accent);
     text-decoration: underline;
   }
   .email-text {
     color: var(--muted);
-    font-size: 14px;
+    font-size: 13.5px;
     font-weight: 500;
     user-select: text;
   }
@@ -103,11 +103,11 @@
   /* ============ Sections ============ */
   h2 {
     font-family: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-    font-size: 22px;
+    font-size: 18px;
     color: var(--text);
-    font-weight: 700;
+    font-weight: 650;
     font-style: normal;
-    margin: 64px 0 32px;
+    margin: 64px 0 30px;
     padding-bottom: 12px;
     border-bottom: 0;
     position: relative;
@@ -117,8 +117,8 @@
     position: absolute;
     bottom: -1px;
     left: 0;
-    width: 56px;
-    height: 3px;
+    width: 44px;
+    height: 2px;
     background: var(--accent);
   }
   p { margin: 0 0 14px; }
@@ -129,61 +129,63 @@
   /* ============ Entry rows ============ */
   .entry {
     display: grid;
-    grid-template-columns: 110px 1fr;
-    gap: 24px;
-    margin-bottom: 30px;
-  }
-  .entry .date {
-    color: var(--muted);
-    font-size: 13px;
-    font-variant-numeric: tabular-nums;
-    padding-top: 4px;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
+    grid-template-columns: 136px 1fr;
+    gap: 30px;
+    align-items: start;
+    margin-bottom: 38px;
   }
   .entry-body { min-width: 0; }
-  .role-line {
+  .entry-logo {
     display: flex;
-    align-items: center;
-    gap: 18px;
-    margin-bottom: 7px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-top: 4px;
   }
   .role-logo {
-    width: 54px;
-    height: 54px;
+    width: 74px;
+    height: 74px;
     object-fit: contain;
+    object-position: left center;
     background: transparent;
-    flex-shrink: 0;
+  }
+  .logo-wordmark {
+    width: 126px;
+    height: 56px;
+  }
+  .logo-uw {
+    width: 78px;
+    height: 78px;
+  }
+  .logo-tsinghua {
+    width: 76px;
+    height: 76px;
   }
   .role {
     font-weight: 600;
-    font-size: 16px;
+    font-size: 16.5px;
+    line-height: 1.35;
   }
-  .org {
+  .meta {
     color: var(--muted);
     font-size: 14.5px;
-    margin-bottom: 6px;
-    padding-left: 72px;
+    margin: 4px 0 8px;
+  }
+  .meta strong {
+    color: var(--text);
+    font-weight: 600;
   }
   .desc {
     font-size: 14.5px;
-    color: #2a2a2a;
+    color: #38332d;
     line-height: 1.65;
-    padding-left: 72px;
+    max-width: 560px;
   }
-  .dot-active {
-    display: inline-block;
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: #2da44e;
+  .current-label {
+    color: var(--accent);
+    font-size: 12.5px;
+    font-weight: 600;
     margin-left: 6px;
-    animation: pulse 2s ease-in-out infinite;
-    vertical-align: middle;
-  }
-  @keyframes pulse {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(45, 164, 78, 0.5); }
-    50% { box-shadow: 0 0 0 5px rgba(45, 164, 78, 0); }
+    vertical-align: 1px;
   }
 
   /* ============ Publications ============ */
@@ -257,7 +259,7 @@
     font-size: 12.5px;
     text-align: center;
     font-style: italic;
-    font-family: "Cormorant Garamond", Georgia, serif;
+    font-family: "Newsreader", Georgia, serif;
   }
 
   /* ============ Mobile ============ */
@@ -272,11 +274,11 @@
     .links { gap: 12px; }
     .pub-card { grid-template-columns: 1fr; gap: 14px; }
     .pub-figure { max-width: 320px; }
-    .entry { grid-template-columns: 1fr; gap: 6px; }
-    .entry .date { padding-top: 0; margin-bottom: 4px; }
+    .entry { grid-template-columns: 92px 1fr; gap: 18px; }
     h2 { font-size: 21px; }
-    .role-logo { width: 48px; height: 48px; }
-    .org, .desc { padding-left: 66px; }
+    .role-logo { width: 62px; height: 62px; }
+    .logo-wordmark { width: 86px; height: 44px; }
+    .logo-uw, .logo-tsinghua { width: 64px; height: 64px; }
   }
   @media (max-width: 430px) {
     .hero {
@@ -356,56 +358,51 @@
       <h2>Experience</h2>
 
       <div class="entry">
-        <div class="date">2025 &mdash; Now</div>
+        <div class="entry-logo">
+          <img class="role-logo logo-wordmark" src="assets/logos/bytedance-wordmark.svg" alt="ByteDance Seed logo">
+        </div>
         <div class="entry-body">
-          <div class="role-line">
-            <img class="role-logo" src="assets/logos/bytedance.svg" alt="ByteDance Seed logo">
-            <span class="role">Research Scientist <span class="dot-active" title="Current"></span></span>
-          </div>
-          <div class="org">ByteDance Seed &middot; Bellevue, WA</div>
+          <div class="role">Research Scientist <span class="current-label">✨ current</span></div>
+          <div class="meta"><strong>ByteDance Seed</strong> &middot; Bellevue, WA &middot; 2025 &mdash; Now</div>
           <div class="desc">
-            Scaling LLM pre-training: developing a torch-native graph compiler to streamline
-            N-dimensional parallelism and other optimizations. Built
-            <em class="work">Charon</em>, a high-fidelity simulator for LLM / VLM training and
-            inference within the PyTorch-native ecosystem (accepted at MLSys 2026).
+            Scaling LLM pre-training systems, PyTorch-native graph compilation, and
+            performance modeling. Built <em class="work">Charon</em>, a simulator for
+            LLM / VLM training and inference accepted at MLSys 2026.
           </div>
         </div>
       </div>
 
       <div class="entry">
-        <div class="date">2024</div>
+        <div class="entry-logo">
+          <img class="role-logo logo-wordmark" src="assets/logos/bytedance-wordmark.svg" alt="ByteDance logo">
+        </div>
         <div class="entry-body">
-          <div class="role-line">
-            <img class="role-logo" src="assets/logos/bytedance.svg" alt="ByteDance logo">
-            <span class="role">Research Engineer Intern</span>
-          </div>
-          <div class="org">ByteDance &middot; Bellevue, WA</div>
+          <div class="role">Research Engineer Intern</div>
+          <div class="meta"><strong>ByteDance</strong> &middot; Bellevue, WA &middot; 2024</div>
         </div>
       </div>
 
       <div class="entry">
-        <div class="date">2023</div>
+        <div class="entry-logo">
+          <img class="role-logo" src="https://www.google.com/s2/favicons?domain=metabit-trading.com&sz=256" alt="Metabit Trading logo">
+        </div>
         <div class="entry-body">
-          <div class="role-line">
-            <img class="role-logo" src="https://www.google.com/s2/favicons?domain=metabit-trading.com&sz=256" alt="Metabit Trading logo">
-            <span class="role">Quantitative Developer Intern</span>
-          </div>
-          <div class="org">Metabit Trading &middot; Shanghai, China</div>
+          <div class="role">Quantitative Developer Intern</div>
+          <div class="meta"><strong>Metabit Trading</strong> &middot; Shanghai, China &middot; 2023</div>
           <div class="desc">
-            Architected scalable quantitative trading components, ensuring high availability
-            for large-scale data processing.
+            Architected scalable quantitative trading components for high-availability
+            data processing.
           </div>
         </div>
       </div>
 
       <div class="entry">
-        <div class="date">2023</div>
+        <div class="entry-logo">
+          <img class="role-logo" src="assets/logos/microsoft.svg" alt="Microsoft logo">
+        </div>
         <div class="entry-body">
-          <div class="role-line">
-            <img class="role-logo" src="assets/logos/microsoft.svg" alt="Microsoft logo">
-            <span class="role">Machine Learning Engineer Intern</span>
-          </div>
-          <div class="org">Microsoft &middot; Beijing, China</div>
+          <div class="role">Machine Learning Engineer Intern</div>
+          <div class="meta"><strong>Microsoft</strong> &middot; Beijing, China &middot; 2023</div>
           <div class="desc">
             Optimized Transformer-based MoE model inference with FasterTransformer.
           </div>
@@ -413,13 +410,12 @@
       </div>
 
       <div class="entry">
-        <div class="date">2021 &mdash; 2022</div>
+        <div class="entry-logo">
+          <img class="role-logo" src="assets/logos/microsoft.svg" alt="Microsoft Research logo">
+        </div>
         <div class="entry-body">
-          <div class="role-line">
-            <img class="role-logo" src="assets/logos/microsoft.svg" alt="Microsoft Research logo">
-            <span class="role">Research Intern</span>
-          </div>
-          <div class="org">Microsoft Research &middot; Beijing, China</div>
+          <div class="role">Research Intern</div>
+          <div class="meta"><strong>Microsoft Research</strong> &middot; Beijing, China &middot; 2021 &mdash; 2022</div>
           <div class="desc">
             Researched deep-learning models for image and video super-resolution and compression.
           </div>
@@ -433,35 +429,32 @@
       <h2>Education</h2>
 
       <div class="entry">
-        <div class="date">2023 &mdash; 2025</div>
+        <div class="entry-logo">
+          <img class="role-logo logo-uw" src="assets/logos/washington.svg" alt="University of Washington logo">
+        </div>
         <div class="entry-body">
-          <div class="role-line">
-            <img class="role-logo" src="assets/logos/washington.svg" alt="University of Washington logo">
-            <span class="role">M.S. in Computer Science</span>
-          </div>
-          <div class="org">University of Washington</div>
+          <div class="role">M.S. in Computer Science</div>
+          <div class="meta"><strong>University of Washington</strong> &middot; 2023 &mdash; 2025</div>
         </div>
       </div>
 
       <div class="entry">
-        <div class="date">2022 &mdash; 2025</div>
+        <div class="entry-logo">
+          <img class="role-logo logo-tsinghua" src="assets/logos/tsinghua.svg" alt="Tsinghua University logo">
+        </div>
         <div class="entry-body">
-          <div class="role-line">
-            <img class="role-logo" src="assets/logos/tsinghua.svg" alt="Tsinghua University logo">
-            <span class="role">M.S. in Computer Science</span>
-          </div>
-          <div class="org">Tsinghua University &middot; Dual Degree</div>
+          <div class="role">M.S. in Computer Science</div>
+          <div class="meta"><strong>Tsinghua University</strong> &middot; Dual Degree &middot; 2022 &mdash; 2025</div>
         </div>
       </div>
 
       <div class="entry">
-        <div class="date">2018 &mdash; 2022</div>
+        <div class="entry-logo">
+          <img class="role-logo logo-tsinghua" src="assets/logos/tsinghua.svg" alt="Tsinghua University logo">
+        </div>
         <div class="entry-body">
-          <div class="role-line">
-            <img class="role-logo" src="assets/logos/tsinghua.svg" alt="Tsinghua University logo">
-            <span class="role">B.S. in Computer Science and Technology</span>
-          </div>
-          <div class="org">Tsinghua University</div>
+          <div class="role">B.S. in Computer Science and Technology</div>
+          <div class="meta"><strong>Tsinghua University</strong> &middot; 2018 &mdash; 2022</div>
         </div>
       </div>
     </section>
