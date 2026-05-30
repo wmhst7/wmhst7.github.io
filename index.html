@@ -28,6 +28,19 @@
     --fs-meta: 14px;
     --fs-small: 13px;
   }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --text: #e7e4df;
+      --muted: #a4a199;
+      --faint: #6f6c65;
+      --soft: #1f1e1b;
+      --accent: #d59c87;
+      --link: #84a9d6;
+      --link-hover: #a6c4e8;
+      --bg: #131210;
+      --border: #2c2a26;
+    }
+  }
   * { box-sizing: border-box; }
   html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; scroll-behavior: smooth; }
   body {
@@ -151,7 +164,6 @@
     color: var(--link-hover);
     text-decoration: underline;
   }
-  em.work { font-style: italic; color: var(--text); }
 
   /* ============ Entry rows ============ */
   .entry {
@@ -192,18 +204,14 @@
     font-weight: 450;
   }
   .meta a strong { color: inherit; }
-  .desc {
-    font-size: var(--fs-meta);
-    color: #3d3a35;
-    line-height: 1.58;
-    max-width: 520px;
-  }
   .current-label {
-    color: var(--accent);
-    font-size: var(--fs-small);
-    font-weight: 500;
-    margin-left: 6px;
-    vertical-align: 1px;
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    margin-left: 9px;
+    vertical-align: 2px;
   }
 
   /* ============ Publications ============ */
@@ -328,7 +336,7 @@
     <!-- ============ Bio ============ -->
     <section class="bio">
       <p class="intro">
-        I am a Research Scientist at <a class="text-link" href="https://seed.bytedance.com/en/" target="_blank" rel="noopener"><strong>ByteDance Seed</strong></a>, working on systems for large-scale language models. My work focuses on scaling LLM pretraining through PyTorch-native graph compilation, distributed training optimization, performance modeling, and heterogeneous inference systems. During my master's studies, I was advised by <a class="text-link" href="https://en.wikipedia.org/wiki/Yunhao_Liu" target="_blank" rel="noopener"><strong>Yunhao Liu</strong></a>. I received my dual M.S. degree from the <strong>University of Washington</strong> and <strong>Tsinghua University</strong>, and my B.S. from <strong>Tsinghua University</strong>.
+        I am a Research Scientist at <a class="text-link" href="https://seed.bytedance.com/en/" target="_blank" rel="noopener"><strong>ByteDance Seed</strong></a>, working on systems for large-scale language models. My work focuses on scaling LLM pretraining through PyTorch-native graph compilation, distributed training optimization, performance modeling, and heterogeneous inference systems. I am an active contributor to <a class="text-link" href="https://github.com/pytorch/pytorch" target="_blank" rel="noopener"><strong>PyTorch</strong></a> and <a class="text-link" href="https://github.com/pytorch/torchtitan" target="_blank" rel="noopener"><strong>torchtitan</strong></a>. During my master's studies, I was advised by <a class="text-link" href="https://en.wikipedia.org/wiki/Yunhao_Liu" target="_blank" rel="noopener"><strong>Yunhao Liu</strong></a>. I received my dual M.S. degree from the <strong>University of Washington</strong> and <strong>Tsinghua University</strong>, and my B.S. from <strong>Tsinghua University</strong>.
       </p>
     </section>
 
@@ -374,7 +382,7 @@
           <img class="role-logo logo-company" src="assets/logos/bytedance.svg" alt="ByteDance Seed logo">
         </div>
         <div class="entry-body">
-          <div class="role">Research Scientist <span class="current-label">✨ current</span></div>
+          <div class="role">Research Scientist <span class="current-label" role="img" aria-label="current position" title="Current"></span></div>
           <div class="meta"><a class="text-link" href="https://seed.bytedance.com/en/" target="_blank" rel="noopener"><strong>ByteDance Seed</strong></a> &middot; Bellevue, WA &middot; 2025 &mdash; Now</div>
         </div>
       </div>
