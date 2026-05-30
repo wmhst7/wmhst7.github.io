@@ -5,7 +5,59 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mingheng Wu</title>
 <meta name="description" content="Mingheng Wu — Research Scientist at ByteDance Seed, working on systems for large-scale language models.">
+<meta name="author" content="Mingheng Wu">
+<link rel="canonical" href="https://wmhst7.github.io/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Mingheng Wu">
+<meta property="og:description" content="Research Scientist at ByteDance Seed, working on systems for large-scale language models.">
+<meta property="og:url" content="https://wmhst7.github.io/">
+<meta property="og:image" content="https://wmhst7.github.io/assets/avatar.jpg">
+<meta property="profile:first_name" content="Mingheng">
+<meta property="profile:last_name" content="Wu">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mingheng Wu">
+<meta name="twitter:description" content="Research Scientist at ByteDance Seed, working on systems for large-scale language models.">
+<meta name="twitter:image" content="https://wmhst7.github.io/assets/avatar.jpg">
+
+<!-- Structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Mingheng Wu",
+  "alternateName": "吴明恒",
+  "url": "https://wmhst7.github.io/",
+  "image": "https://wmhst7.github.io/assets/avatar.jpg",
+  "jobTitle": "Research Scientist",
+  "worksFor": { "@type": "Organization", "name": "ByteDance Seed" },
+  "alumniOf": [
+    { "@type": "CollegeOrUniversity", "name": "University of Washington" },
+    { "@type": "CollegeOrUniversity", "name": "Tsinghua University" }
+  ],
+  "sameAs": [
+    "https://www.linkedin.com/in/minghengwu/",
+    "https://scholar.google.com/citations?user=5NWA9ikAAAAJ&hl=en",
+    "https://github.com/wmhst7"
+  ]
+}
+</script>
+
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>M</text></svg>">
+<script>
+  // Apply saved theme before paint to avoid flash; default to light.
+  (function () {
+    try {
+      var t = localStorage.getItem("theme");
+      document.documentElement.dataset.theme = t === "dark" ? "dark" : "light";
+    } catch (e) {
+      document.documentElement.dataset.theme = "light";
+    }
+  })();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..600&display=swap" rel="stylesheet">
@@ -28,18 +80,16 @@
     --fs-meta: 14px;
     --fs-small: 13px;
   }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --text: #e7e4df;
-      --muted: #a4a199;
-      --faint: #6f6c65;
-      --soft: #1f1e1b;
-      --accent: #d59c87;
-      --link: #84a9d6;
-      --link-hover: #a6c4e8;
-      --bg: #131210;
-      --border: #2c2a26;
-    }
+  :root[data-theme="dark"] {
+    --text: #e7e4df;
+    --muted: #a4a199;
+    --faint: #6f6c65;
+    --soft: #1f1e1b;
+    --accent: #d59c87;
+    --link: #84a9d6;
+    --link-hover: #a6c4e8;
+    --bg: #131210;
+    --border: #2c2a26;
   }
   * { box-sizing: border-box; }
   html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; scroll-behavior: smooth; }
@@ -58,6 +108,35 @@
     margin: 0 auto;
     padding: 64px 40px 96px;
   }
+
+  /* ============ Theme toggle ============ */
+  .theme-toggle {
+    position: fixed;
+    top: 22px;
+    right: 22px;
+    z-index: 10;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    background: var(--bg);
+    color: var(--muted);
+    cursor: pointer;
+    transition: color 0.15s ease, border-color 0.15s ease, transform 0.2s ease;
+  }
+  .theme-toggle:hover {
+    color: var(--text);
+    border-color: var(--faint);
+    transform: scale(1.06);
+  }
+  .theme-toggle svg { width: 18px; height: 18px; display: block; }
+  .theme-toggle .icon-sun { display: none; }
+  :root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+  :root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
 
   /* ============ Hero ============ */
   .hero {
@@ -317,6 +396,10 @@
 </style>
 </head>
 <body>
+  <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle theme">
+    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+  </button>
   <div class="container">
 
     <!-- ============ Hero ============ -->
@@ -336,7 +419,7 @@
     <!-- ============ Bio ============ -->
     <section class="bio">
       <p class="intro">
-        I am a Research Scientist at <a class="text-link" href="https://seed.bytedance.com/en/" target="_blank" rel="noopener"><strong>ByteDance Seed</strong></a>, working on systems for large-scale language models. My work focuses on scaling LLM pretraining through PyTorch-native graph compilation, distributed training optimization, performance modeling, and heterogeneous inference systems. I am an active contributor to <a class="text-link" href="https://github.com/pytorch/pytorch" target="_blank" rel="noopener"><strong>PyTorch</strong></a> and <a class="text-link" href="https://github.com/pytorch/torchtitan" target="_blank" rel="noopener"><strong>torchtitan</strong></a>. During my master's studies, I was advised by <a class="text-link" href="https://en.wikipedia.org/wiki/Yunhao_Liu" target="_blank" rel="noopener"><strong>Yunhao Liu</strong></a>. I received my dual M.S. degree from the <strong>University of Washington</strong> and <strong>Tsinghua University</strong>, and my B.S. from <strong>Tsinghua University</strong>.
+        I am a Research Scientist at <a class="text-link" href="https://seed.bytedance.com/en/" target="_blank" rel="noopener"><strong>ByteDance Seed</strong></a>, working on systems for large-scale language models. My work focuses on scaling LLM pretraining through PyTorch-native graph compilation, distributed training optimization, performance modeling, and heterogeneous inference systems. I am a contributor to <a class="text-link" href="https://github.com/pytorch/pytorch" target="_blank" rel="noopener"><strong>PyTorch</strong></a> and <a class="text-link" href="https://github.com/pytorch/torchtitan" target="_blank" rel="noopener"><strong>torchtitan</strong></a>. During my master's studies, I was advised by <a class="text-link" href="https://en.wikipedia.org/wiki/Yunhao_Liu" target="_blank" rel="noopener"><strong>Yunhao Liu</strong></a>. I received my dual M.S. degree from the <strong>University of Washington</strong> and <strong>Tsinghua University</strong>, and my B.S. from <strong>Tsinghua University</strong>.
       </p>
     </section>
 
@@ -459,5 +542,16 @@
     </footer>
 
   </div>
+  <script>
+    (function () {
+      var btn = document.getElementById("theme-toggle");
+      if (!btn) return;
+      btn.addEventListener("click", function () {
+        var next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+        document.documentElement.dataset.theme = next;
+        try { localStorage.setItem("theme", next); } catch (e) {}
+      });
+    })();
+  </script>
 </body>
 </html>
