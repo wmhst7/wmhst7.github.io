@@ -54,17 +54,14 @@
     try {
       var t = localStorage.getItem("theme");
       document.documentElement.dataset.theme = t === "dark" ? "dark" : "light";
-      var f = localStorage.getItem("font");
-      document.documentElement.dataset.font = f || "inter";
     } catch (e) {
       document.documentElement.dataset.theme = "light";
-      document.documentElement.dataset.font = "inter";
     }
   })();
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..600&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@300;400;500;600&family=JetBrains+Mono:wght@300..600&family=Geist:wght@300..600&family=Geist+Mono:wght@300..600&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300..600&display=swap" rel="stylesheet">
 <style>
   :root {
     --text: #191918;
@@ -76,7 +73,7 @@
     --link-hover: #1f477c;
     --bg: #fff;
     --border: #e8e3dc;
-    --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", sans-serif;
+    --font-sans: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     --font-display: var(--font-sans);
     --fs-body: 16px;
     --fs-name: 46px;
@@ -84,23 +81,6 @@
     --fs-title: 16.5px;
     --fs-meta: 14px;
     --fs-small: 13px;
-  }
-  /* Font schemes (toggled via the bottom-right switcher) */
-  :root[data-font="plex"] {
-    --font-sans: "IBM Plex Sans", sans-serif;
-    --font-display: "IBM Plex Mono", monospace;
-  }
-  :root[data-font="jetbrains"] {
-    --font-sans: "JetBrains Mono", monospace;
-    --font-display: "JetBrains Mono", monospace;
-  }
-  :root[data-font="geist"] {
-    --font-sans: "Geist", sans-serif;
-    --font-display: "Geist Mono", monospace;
-  }
-  :root[data-font="grotesk"] {
-    --font-sans: "Space Grotesk", sans-serif;
-    --font-display: "Space Grotesk", sans-serif;
   }
   :root[data-theme="dark"] {
     --text: #e7e4df;
@@ -159,49 +139,6 @@
   .theme-toggle .icon-sun { display: none; }
   :root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
   :root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
-
-  /* ============ Font switcher (temporary compare tool) ============ */
-  .font-switcher {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 10;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    padding: 8px;
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    background: var(--bg);
-    box-shadow: 0 2px 14px rgba(25,25,25,0.10);
-  }
-  .font-switcher .fs-label {
-    font-family: var(--font-sans);
-    font-size: 10px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--faint);
-    padding: 0 4px 2px;
-  }
-  .font-switcher button {
-    font-family: var(--font-sans);
-    font-size: 12.5px;
-    text-align: left;
-    padding: 5px 10px;
-    border: 1px solid transparent;
-    border-radius: 6px;
-    background: transparent;
-    color: var(--muted);
-    cursor: pointer;
-    transition: background 0.12s ease, color 0.12s ease;
-  }
-  .font-switcher button:hover { background: var(--soft); color: var(--text); }
-  .font-switcher button[aria-pressed="true"] {
-    background: var(--soft);
-    border-color: var(--border);
-    color: var(--text);
-    font-weight: 500;
-  }
 
   /* ============ Hero ============ */
   .hero {
@@ -469,14 +406,6 @@
     <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
     <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
   </button>
-  <div class="font-switcher" id="font-switcher" aria-label="Font style switcher">
-    <span class="fs-label">Font</span>
-    <button type="button" data-font="inter" aria-pressed="true">Inter</button>
-    <button type="button" data-font="plex" aria-pressed="false">IBM Plex + Mono</button>
-    <button type="button" data-font="jetbrains" aria-pressed="false">JetBrains Mono</button>
-    <button type="button" data-font="geist" aria-pressed="false">Geist + Mono</button>
-    <button type="button" data-font="grotesk" aria-pressed="false">Space Grotesk</button>
-  </div>
   <div class="container">
 
     <!-- ============ Hero ============ -->
@@ -627,26 +556,6 @@
         var next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
         document.documentElement.dataset.theme = next;
         try { localStorage.setItem("theme", next); } catch (e) {}
-      });
-    })();
-
-    (function () {
-      var sw = document.getElementById("font-switcher");
-      if (!sw) return;
-      var buttons = sw.querySelectorAll("button[data-font]");
-      function sync(font) {
-        buttons.forEach(function (b) {
-          b.setAttribute("aria-pressed", b.dataset.font === font ? "true" : "false");
-        });
-      }
-      sync(document.documentElement.dataset.font || "inter");
-      sw.addEventListener("click", function (e) {
-        var b = e.target.closest("button[data-font]");
-        if (!b) return;
-        var font = b.dataset.font;
-        document.documentElement.dataset.font = font;
-        try { localStorage.setItem("font", font); } catch (e) {}
-        sync(font);
       });
     })();
   </script>
