@@ -169,30 +169,11 @@
     padding-top: 2px;
   }
   .role-logo {
-    width: 62px;
-    height: 62px;
+    width: 60px;
+    height: 60px;
     object-fit: contain;
     object-position: left center;
     background: transparent;
-  }
-  .logo-bytedance { width: 64px; height: 64px; }
-  .logo-qianxiang { width: 64px; height: 64px; }
-  .logo-uw {
-    width: 66px;
-    height: 66px;
-  }
-  .logo-tsinghua {
-    width: 64px;
-    height: 64px;
-  }
-  .logo-pair {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .logo-pair .role-logo {
-    width: 42px;
-    height: 42px;
   }
   .role {
     font-weight: 500;
@@ -229,7 +210,7 @@
   }
   .pub-card {
     display: grid;
-    grid-template-columns: 300px 1fr;
+    grid-template-columns: 400px 1fr;
     gap: 32px;
     align-items: start;
   }
@@ -279,7 +260,7 @@
     border-radius: 5px;
     overflow: hidden;
     background: #fff;
-    max-width: 300px;
+    max-width: 400px;
   }
   .pub-figure img {
     display: block;
@@ -313,11 +294,7 @@
     .pub-figure { max-width: 260px; }
     .entry { grid-template-columns: 74px 1fr; gap: 16px; margin-bottom: 28px; }
     h2 { font-size: var(--fs-section); }
-    .role-logo { width: 54px; height: 54px; }
-    .logo-bytedance, .logo-qianxiang { width: 56px; height: 56px; }
-    .logo-uw, .logo-tsinghua { width: 56px; height: 56px; }
-    .logo-pair { gap: 6px; }
-    .logo-pair .role-logo { width: 34px; height: 34px; }
+    .role-logo { width: 52px; height: 52px; }
   }
   @media (max-width: 430px) {
     .hero {
@@ -390,40 +367,31 @@
 
       <div class="entry">
         <div class="entry-logo">
-          <img class="role-logo logo-bytedance" src="assets/logos/bytedance.svg" alt="ByteDance Seed logo">
+          <img class="role-logo" src="assets/logos/bytedance.svg" alt="ByteDance Seed logo">
         </div>
         <div class="entry-body">
           <div class="role">Research Scientist <span class="current-label">✨ current</span></div>
           <div class="meta"><a class="text-link" href="https://seed.bytedance.com/en/" target="_blank" rel="noopener"><strong>ByteDance Seed</strong></a> &middot; Bellevue, WA &middot; 2025 &mdash; Now</div>
-          <div class="desc">
-            Scaling LLM pre-training systems, PyTorch-native graph compilation, and
-            performance modeling. Built <em class="work">Charon</em>, a simulator for
-            LLM / VLM training and inference accepted at MLSys 2026.
-          </div>
         </div>
       </div>
 
       <div class="entry">
         <div class="entry-logo">
-          <img class="role-logo logo-bytedance" src="assets/logos/bytedance.svg" alt="ByteDance logo">
+          <img class="role-logo" src="assets/logos/bytedance.svg" alt="ByteDance Seed logo">
         </div>
         <div class="entry-body">
           <div class="role">Research Engineer Intern</div>
-          <div class="meta"><strong>ByteDance</strong> &middot; Bellevue, WA &middot; 2024</div>
+          <div class="meta"><strong>ByteDance Seed</strong> &middot; Bellevue, WA &middot; 2024</div>
         </div>
       </div>
 
       <div class="entry">
         <div class="entry-logo">
-          <img class="role-logo logo-qianxiang" src="assets/logos/qianxiang.svg" alt="Metabit Trading logo">
+          <img class="role-logo" src="assets/logos/qianxiang.svg" alt="Metabit Trading logo">
         </div>
         <div class="entry-body">
           <div class="role">Quantitative Developer Intern</div>
           <div class="meta"><strong>Metabit Trading</strong> &middot; Shanghai, China &middot; 2023</div>
-          <div class="desc">
-            Architected scalable quantitative trading components for high-availability
-            data processing.
-          </div>
         </div>
       </div>
 
@@ -434,9 +402,6 @@
         <div class="entry-body">
           <div class="role">Machine Learning Engineer Intern</div>
           <div class="meta"><strong>Microsoft</strong> &middot; Beijing, China &middot; 2023</div>
-          <div class="desc">
-            Optimized Transformer-based MoE model inference with FasterTransformer.
-          </div>
         </div>
       </div>
 
@@ -447,9 +412,6 @@
         <div class="entry-body">
           <div class="role">Research Intern</div>
           <div class="meta"><strong>Microsoft Research</strong> &middot; Beijing, China &middot; 2021 &mdash; 2022</div>
-          <div class="desc">
-            Researched deep-learning models for image and video super-resolution and compression.
-          </div>
         </div>
       </div>
 
@@ -461,10 +423,7 @@
 
       <div class="entry">
         <div class="entry-logo">
-          <div class="logo-pair" aria-label="University of Washington and Tsinghua University logos">
-            <img class="role-logo logo-uw" src="assets/logos/washington.svg" alt="University of Washington logo">
-            <img class="role-logo logo-tsinghua" src="assets/logos/tsinghua.svg" alt="Tsinghua University logo">
-          </div>
+          <img class="role-logo" src="assets/logos/washington.svg" alt="University of Washington logo">
         </div>
         <div class="entry-body">
           <div class="role">M.S. in Computer Science</div>
@@ -474,7 +433,7 @@
 
       <div class="entry">
         <div class="entry-logo">
-          <img class="role-logo logo-tsinghua" src="assets/logos/tsinghua.svg" alt="Tsinghua University logo">
+          <img class="role-logo" src="assets/logos/tsinghua.svg" alt="Tsinghua University logo">
         </div>
         <div class="entry-body">
           <div class="role">B.S. in Computer Science and Technology</div>
